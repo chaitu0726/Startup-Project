@@ -1,0 +1,196 @@
+
+create table login(username varchar(50),password varchar(50));
+
+
+create table User(
+user_name varchar(30),
+gst_id varchar(30),
+contact_no long,
+email varchar(30) primary key,
+password varchar(30)
+);
+
+
+
+create table startup(
+registration_date date,
+description varchar(100),
+no_of_Employee int,
+email varchar(20),
+startup_id int primary key auto_increment,
+constraint fk_startup foreign key(email) references user(email)
+
+);
+
+
+create table company(
+description varchar(100),
+email varchar(20),
+company_id int primary key auto_increment,
+constraint fk_company foreign key(email) references user(email)
+);
+
+
+
+create table bidding_details
+(bid_id int primary key auto_increment,
+project_id int,
+company_id int,
+startup_id int ,
+bid_amount double,
+bid_duration varchar(50),
+bid_status varchar(50),
+constraint fk_bd1 foreign key(company_id) references company(company_id),
+constraint fk_bd2 foreign key(startup_id) references startup(startup_id),
+constraint fk_bd3 foreign key(project_id) references project(project_id)
+);
+
+
+create table project
+(
+project_id int primary key auto_increment,
+project_name varchar(50),
+project_technology varchar(50),
+project_duration varchar(50),
+project_description varchar(255),
+project_bid_amount double,
+company_id int,
+constraint fk_project foreign key(company_id) references company(company_id)
+);
+
+create table funds
+(fund_id int primary key auto_increment,
+startup_id int,
+company_id int,
+fund_amount double,
+fund_status varchar(50),
+fund_description varchar(200),
+constraint fk_fund1 foreign key(company_id) references company(company_id),
+constraint fk_fund2 foreign key(startup_id) references startup(startup_id)
+);
+
+========================================================================================================================
+
+create table gst_company(gst_id varchar (15) NOT NULL primary key ,company_id int);
+
+alter table gst_company add constraint fk_gstc foreign key (company_id) references company(company_id);
+========================================================================================================================
+create table gst_startup(gst_id varchar (15) NOT NULL primary key ,startup_id int);
+
+alter table gst_startup add constraint fk_gsts foreign key (startup_id) references startup(startup_id);
+======================================================================================================================
+
+
+create table gst(gst_id varchar(15) NOT NULL primary key);
+
+insert into gst values("gstin15031997");
+insert into gst values("gstin27051996");
+insert into gst values("gstin26071997");
+insert into gst values("gstin07041996");
+==================================================================================
+alter table gst add column name varchar(30),pan varchar(15);
+================================================================ =======================================
+alter table user add column flag varchar(6);
+alter table company add column flag varchar(6);
+alter table startup add column flag varchar(6);
+alter table project add column flag varchar(6);
+alter table bidding_details add column flag varchar(6);
+alter table funds add column flag varchar(6);
+alter table gst_company add column flag varchar(6);
+alter table gst_startup add column flag varchar(6);
+==============================================================================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		BACKUP  TABLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+create table User_backup(
+user_name varchar(30),
+gst_id varchar(30),
+contact_no long,
+user_email varchar(30) primary key,
+password varchar(30)
+);
+======================================================================================
+
+create table company_backup(
+description varchar(100),
+user_email varchar(20),
+company_cid int primary key auto_increment,
+constraint fk_bcompany foreign key(user_email) references user_backup(user_email)
+);
+
+=======================================================================================================
+
+create table project_backup
+(
+project_pid int primary key auto_increment,
+project_name varchar(50),
+project_technology varchar(50),
+project_duration varchar(50),
+project_description varchar(255),
+project_bid_amount double,
+company_cid int,
+constraint fk_pproject foreign key(company_cid) references company_backup(company_cid)
+);
+  
+====================================================================================================
+
+create table funds_backup
+(fund_fid int primary key auto_increment,
+startup_sid int,
+company_cid int,
+fund_amount double,
+fund_status varchar(50),
+fund_description varchar(200),
+constraint fk_cfund foreign key(company_cid) references company_backup(company_cid),
+constraint fk_sfund foreign key(startup_sid) references startup_backup(startup_sid)
+);
+
+============================================================================================================
+
+create table bidding_details_backup
+(bid_id1 int primary key auto_increment,
+project_pid int,
+company_cid int,
+startup_sid int ,
+bid_amount double,
+bid_duration varchar(50),
+bid_status varchar(50),
+constraint fk_cbd foreign key(company_cid) references company_backup(company_cid),
+constraint fk_sbd foreign key(startup_sid) references startup_backup(startup_sid),
+constraint fk_pbd foreign key(project_pid) references project_backup(project_pid)
+);
+
+================================================================================================================
+
+create table startup_backup(
+registration_date date,
+description varchar(100),
+no_of_Employee int,
+user_email varchar(20),
+startup_sid int primary key auto_increment,
+constraint fk_bstartup foreign key(user_email) references user_backup(user_email)
+);
+==============================================================================================
+create table login_backup(username varchar(50),password varchar(50));
+=============================================================================================
+create table gst_company_backup(gst_cid varchar (15) NOT NULL primary key ,company_cid int);
+
+alter table gst_company_backup add constraint fk_cgst foreign key (company_cid) references company_backup(company_cid);
+========================================================================================================================
+create table gst_startup_backup(gst_sid varchar (15) NOT NULL primary key ,startup_sid int);
+
+alter table gst_startup_backup add constraint fk_sgst foreign key (startup_sid) references startup_backup(startup_sid);
+======================================================================================================================
+
+
+create table gst_backup(gst_gid varchar(15) NOT NULL primary key);
+
+insert into gst_backup values("gstin15031997");
+insert into gst_backup values("gstin27051996");
+insert into gst_backup values("gstin26071997");
+insert into gst_backup values("gstin07041996");
+==============================================================================================================
+
+
+
+
