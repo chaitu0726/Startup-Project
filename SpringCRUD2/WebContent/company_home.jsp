@@ -1,8 +1,7 @@
-<%@page import="com.project.bean.StartUp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="home.css">
+<link rel="stylesheet" href="sample.css">
 </head>
 <body>
 
@@ -19,40 +18,33 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 	<c:redirect url="index.jsp"></c:redirect>
 </c:if>
 
-<!--   <s:url var="lgot" value="/logout.htm"></s:url> -->
+<c:if test="${sessionScope.uname !=null && sessionScope.role == 2}">
 
-<c:if test="${sessionScope.uname !=null && sessionScope.role == 1}">
-<div class="container">
+<div class="container" >
 
+	<div class="row" style="height:50px; padding:10px; font-size:20px; background-color:gray; ">
+		<div class="col-7"></div>
+		<div class="col-1 "> <a id="link" href="#">HOME</a></div>
+		<div class="col-1 "> <a id="link" href="#">UPDATE</a></div>
+		<div class="col-1"></div>
+		 <div class="col-2 "><a href="logout.htm"><h4 id="link" >Logout</h4></a></div>
+	</div>
+	
 	<div class="row">
 		<div class="LeftSideBar"></div>
 	</div>
 	
 	<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="applied_project.jsp">Applied</a>
-  <a href="selected_project.jsp">Selected</a>
-  <a href="add_funding.jsp">Funding</a>
-  <a href="bidding.jsp">Bidding</a>
+  <a href="#">Add project</a>
+  <a href="#">Funds List</a><br>
+ <a href="#">Bid Details</a>
 </div>
 
-
-<div class="row" style="background-color:lightgreen;  height:50px; text-align: center; padding:10px;">
-<div class="col-5"></div>
-<div class="col-3"><h2>Project List</h2></div>
-<div class="col-2"></div>
-<div class="col-1"><a href="logout.htm"><h4>Logout</h4></a></div>
-</div>
+<div class="row" style="padding:10px;"></div>
+<h2 style="background-color:lightgreen;  height:50px; text-align: center; padding:10px;">List of Startup</h2>
 
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
-
-		<c:forEach items="${lists}" var="temp">
-			<div class="row" style="height:90px">
-			<div class="col-2"></div>
-			<div class="col-8" style="background-color: #E2e2e2">${temp.projectName}</div>
-			<div class="col-2"><a href="apply.htm">Apply</a></div>
-			</div>
-		</c:forEach>
 
 <script>
 function openNav() {
@@ -63,6 +55,7 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 </script>
+	
 </div>
 </c:if>
 </body>

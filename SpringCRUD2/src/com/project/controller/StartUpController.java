@@ -63,7 +63,7 @@ public class StartUpController
 	}
 	
 	
-/*	@RequestMapping(value="/login.htm",method = RequestMethod.GET)
+	@RequestMapping(value="/login.htm",method = RequestMethod.GET)
 	public String loginGet(HttpSession session)
 	{
 		System.out.println(session);
@@ -78,7 +78,7 @@ public class StartUpController
 		{
 			return "index";
 		}
-	}*/
+	}
 	
 	@RequestMapping(value="/login.htm",method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("lg") Login lg,HttpSession session)

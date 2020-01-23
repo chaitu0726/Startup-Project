@@ -25,7 +25,7 @@
                  
             <div class="row  mt-4" >
                 <div class="col-1"></div>
-                <div class="col-4 btn btn-primary"><a class="text-light" href="home.html"> Company  </a> </div> 
+                <div class="col-4 btn btn-primary"><a class="text-light" href="company_register.jsp"> Company  </a> </div> 
                 <div class="col-1"></div>
                 <div class="col-4 btn btn-primary"><a class="text-light"  href="home.jsp">  Startup </a></div>
             </div>
