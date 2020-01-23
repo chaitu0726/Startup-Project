@@ -110,11 +110,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
  <artifactId>hibernate-entitymanager</artifactId>
  <version>${hibernate.version}</version>
 </dependency>
+
   <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+        
  </dependencies>
   
  

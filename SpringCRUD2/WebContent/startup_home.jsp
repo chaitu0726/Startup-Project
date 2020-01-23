@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,9 +13,15 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <link rel="stylesheet" href="home.css">
 </head>
 <body>
+<c:if test="${sessionScope.uname == null}">
+	<%-- user is not available --%>
+	<c:redirect url="index.jsp"></c:redirect>
+</c:if>
+
+<s:url var="lgot" value="/logout.htm"></s:url>
+<c:if test="${sessionScope.uname !=null && sessionScope.role == 1}">
 <div class="container">
 
-	
 	<div class="row">
 		<div class="LeftSideBar"></div>
 	</div>
@@ -32,7 +39,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-5"></div>
 <div class="col-3"><h2>Project List</h2></div>
 <div class="col-2"></div>
-<div class="col-1"><a href="#"><h4>Logout</h4></a></div>
+<div class="col-1"><a href="${lgot}"><h4>Logout</h4></a></div>
 </div>
 
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
@@ -45,8 +52,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 			</div>
 		</c:forEach>
 
-
-
+<c:out value="${sessionScope.uname}"></c:out>
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
@@ -56,7 +62,7 @@ function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
 }
 </script>
-	
 </div>
+</c:if>
 </body>
 </html>

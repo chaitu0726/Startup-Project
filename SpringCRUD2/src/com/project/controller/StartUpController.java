@@ -2,6 +2,9 @@ package com.project.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -59,8 +62,26 @@ public class StartUpController
 		
 	}
 	
+	
+	@RequestMapping(value="/login.htm",method = RequestMethod.GET)
+	public String loginGet(HttpSession session)
+	{
+		System.out.println(session);
+		try {
+		if(session != null)
+			if((int)session.getAttribute("role") == 1)
+				return "startup_home";
+			else
+				return "company_home";
+		return "index";
+		}catch(Exception e)
+		{
+			return "index";
+		}
+	}
+	
 	@RequestMapping(value="/login.htm",method = RequestMethod.POST)
-	public ModelAndView save(@ModelAttribute("lg") Login lg)
+	public ModelAndView save(@ModelAttribute("lg") Login lg,HttpSession session)
 	{
 		ModelAndView model; 
 		//System.out.println("hii");
@@ -71,6 +92,13 @@ public class StartUpController
 			List<Project>list = startUpService.selectAll();
 			model = new ModelAndView("startup_home");
 			model.addObject("lists",list);
+			addUserInSession(lgn, session);
+			return model;
+		}
+		else if(lgn.getFlag() == 2)
+		{
+			model = new ModelAndView("company_home");
+			addUserInSession(lgn, session);
 			return model;
 		}
 		else
@@ -86,5 +114,17 @@ public class StartUpController
 		
 	}
 	
-
+	private void addUserInSession(Login l,HttpSession session)
+	{
+		session.setAttribute("uname",l.getUsername());
+		session.setAttribute("pass", l.getPassword());
+		session.setAttribute("role", l.getFlag());
+	}
+	
+	@RequestMapping("/logout.htm")
+	public String logout(HttpSession session)
+	{
+		session.invalidate();
+		return "index";
+	}
 }
