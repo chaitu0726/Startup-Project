@@ -18,7 +18,8 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 	<c:redirect url="index.jsp"></c:redirect>
 </c:if>
 
-<s:url var="lgot" value="/logout.htm"></s:url>
+<!--   <s:url var="lgot" value="/logout.htm"></s:url> -->
+
 <c:if test="${sessionScope.uname !=null && sessionScope.role == 1}">
 <div class="container">
 
@@ -30,8 +31,8 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">Applied</a>
   <a href="#">Selected</a>
-  <a href="#">Funding</a>
-  <a href="#">Bidding</a>
+  <a href="add_funding.jsp">Funding</a>
+  <a href="bidding.jsp">Bidding</a>
 </div>
 
 
@@ -39,7 +40,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-5"></div>
 <div class="col-3"><h2>Project List</h2></div>
 <div class="col-2"></div>
-<div class="col-1"><a href="${lgot}"><h4>Logout</h4></a></div>
+<div class="col-1"><a href="logout.htm"><h4>Logout</h4></a></div>
 </div>
 
 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
@@ -52,7 +53,6 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 			</div>
 		</c:forEach>
 
-<c:out value="${sessionScope.uname}"></c:out>
 <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
