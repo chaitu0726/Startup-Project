@@ -46,7 +46,7 @@ public class StartUpController
 	}
 
 
-	@RequestMapping(value="/add.htm",method = RequestMethod.POST)
+	@RequestMapping(value="/add",method = RequestMethod.POST)
 	public String save(@ModelAttribute("stp") StartUp stp)
 	{
 		//System.out.println("hii");
@@ -63,7 +63,7 @@ public class StartUpController
 	}
 	
 	
-	@RequestMapping(value="/login.htm",method = RequestMethod.GET)
+	@RequestMapping(value="/login",method = RequestMethod.GET)
 	public String loginGet(HttpSession session)
 	{
 		System.out.println(session);
@@ -80,13 +80,14 @@ public class StartUpController
 		}
 	}
 	
-	@RequestMapping(value="/login.htm",method = RequestMethod.POST)
+	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public ModelAndView save(@ModelAttribute("lg") Login lg,HttpSession session)
 	{
 		ModelAndView model; 
 		//System.out.println("hii");
 		try {
-			Login lgn = loginService.login(lg);
+				Login lgn = loginService.login(lg);
+			//
 		if(lgn.getFlag() == 1)
 		{
 			List<Project>list = startUpService.selectAll();
@@ -114,6 +115,40 @@ public class StartUpController
 		
 	}
 	
+	@RequestMapping(value="/home_startup",method = RequestMethod.GET)
+	public ModelAndView homeGet(HttpSession session)
+	{
+		ModelAndView model; 
+		
+		try {
+			if(Integer.parseInt(session.getAttribute("role").toString()) == 1)
+			{
+			List<Project>list = startUpService.selectAll();
+			model = new ModelAndView("startup_home");
+			model.addObject("lists",list);
+			return model;
+		}
+		else if(Integer.parseInt(session.getAttribute("role").toString()) == 2)
+		{
+			model = new ModelAndView("company_home");
+			return model;
+		}
+		else
+		{
+		
+			model = new ModelAndView("bidding");
+			return model;
+		}
+		}catch(Exception e)
+		{	
+			model = new ModelAndView("bidding");
+			return model;
+		}
+		
+		
+	}
+	
+	
 	private void addUserInSession(Login l,HttpSession session)
 	{
 		session.setAttribute("uname",l.getUsername());
@@ -121,7 +156,7 @@ public class StartUpController
 		session.setAttribute("role", l.getFlag());
 	}
 	
-	@RequestMapping("/logout.htm")
+	@RequestMapping("/logout")
 	public String logout(HttpSession session)
 	{
 		session.invalidate();

@@ -16,17 +16,13 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 </c:if>
 
 <c:if test="${sessionScope.uname !=null && sessionScope.role == 1}">
-
-	<div class="row">
-		<div class="col-2"></div>
-		<div class="col-8" >
-		<div class="row bg-success">
-		<div class="col-9"><h2 style=" height:50px; text-align: center; padding:10px">Applied Project</h2></div>
-		<div  class="col-1"><a href="logout.htm"><h4>Logout</h4></a></div>
-		</div>
-		</div>
-		
+<div class="row bg-dark sticky-top" style="height: 50px">
+<div class="col-1"></div>
+<div class="col-4"><a href="home_startup" class="text-light" style="font-size: 25px">Home</a></div>
+<div class="col-5 text-light" style="font-size: 30px">Applied Project</div>
+<div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
+
 </c:if>
 </body>
 </html>

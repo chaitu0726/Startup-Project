@@ -27,7 +27,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 		<div class="col-1 "> <a id="link" href="#">HOME</a></div>
 		<div class="col-1 "> <a id="link" href="#">UPDATE</a></div>
 		<div class="col-1"></div>
-		 <div class="col-2 "><a href="logout.htm"><h4 id="link" >Logout</h4></a></div>
+		 <div class="col-2 "><a href="logout"><h4 id="link" >Logout</h4></a></div>
 	</div>
 	
 	<div class="row">

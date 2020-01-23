@@ -34,7 +34,7 @@ public class CompanyController {
 		}
 */		
 		
-		@RequestMapping(value="/compReg.htm",method = RequestMethod.GET)
+		@RequestMapping(value="/compReg",method = RequestMethod.GET)
 		public String loginGet(HttpSession session)
 		{
 			System.out.println(session);
@@ -51,7 +51,7 @@ public class CompanyController {
 			}
 		}
 		
-		@RequestMapping(value="/compReg.htm",method=RequestMethod.POST)
+		@RequestMapping(value="/compReg",method=RequestMethod.POST)
 		public String insert(@ModelAttribute("comp")Company comp ,ModelMap model) {
 			
 			

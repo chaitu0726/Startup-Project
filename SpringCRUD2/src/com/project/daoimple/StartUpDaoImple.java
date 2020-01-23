@@ -149,6 +149,7 @@ public class StartUpDaoImple implements StartUpDao {
 				{
 					Project st = new Project();
 					st.setProjectName(rs.getString(2));
+					st.setProjetcId(rs.getInt(1));
 					li.add(st);
 				}
 				return li;

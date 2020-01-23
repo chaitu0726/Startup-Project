@@ -1,5 +1,5 @@
 @charset "ISO-8859-1";
-body{
+.body{
    background-image:url('Startup-India-Scheme.jpg');
   background-repeat:no-repeat;
   background-attachment:fixed;
@@ -15,12 +15,6 @@ body{
   padding:10% 0 0 ;
   margin: auto;  
 }
-
-
-
-
-
-
 
 .form{
 
