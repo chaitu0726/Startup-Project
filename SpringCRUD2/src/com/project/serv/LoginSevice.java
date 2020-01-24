@@ -1,6 +1,6 @@
 package com.project.serv;
 
-import com.project.bean.Login;
+import com.project.model.Login;
 
 public interface LoginSevice {
 

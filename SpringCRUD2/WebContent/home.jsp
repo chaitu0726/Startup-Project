@@ -96,7 +96,7 @@
         <input type="text" name="name" placeholder="Company Name"/>
         <input type="text" name="gstId" placeholder="gst-Id"/>
         <input type="text" name="contactNo" placeholder="Phone No"/>
-        <input type="text" name="email" placeholder="Email-Id"/>
+        <input type="text" id="email" name="email" placeholder="Email-Id"/>
         <input type="text" name="discription" placeholder="Description"/>
         <input type="text" name="noOfEmployee" placeholder="No Of Employee"/>
 		<input type="text" name="pan" placeholder="Enter PAN"/>
@@ -108,4 +108,10 @@
     </div>
     </div>
 </body>
+<script type="text/javascript">
+
+
+</script>
 </html>
+
+

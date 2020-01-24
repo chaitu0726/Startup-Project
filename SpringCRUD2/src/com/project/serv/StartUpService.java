@@ -2,8 +2,8 @@ package com.project.serv;
 
 import java.util.List;
 
-import com.project.bean.Project;
-import com.project.bean.StartUp;
+import com.project.model.Project;
+import com.project.model.StartUp;
 
 public interface StartUpService {
 

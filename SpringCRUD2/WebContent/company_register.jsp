@@ -3,65 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<script>
-	function validate()
-	{
-		const user = document.getElementById("uid").value;
-		const name = document.getElementById("name").value;
-		const gst = document.getElementById("gstid").value;
-		const phone = document.getElementById("phone").value;
-		const email = document.getElementById("email").value;
-		const company = document.getElementById("cid").value;
-		const des = document.getElementById("dse").value;
-		var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-
-
-		if(user=="" || user==null)
-			{
-				alert("user_id cannot be blank");
-				return false;
-			}
-		else if(name==""||name==null)
-			{
-			alert("name cannot be blank");
-			return false;
-			}
-		else if(gst==""||gst==null)
-		{
-			alert("gst_id cannot be blank");
-			return false;
-		}
-		else if(phone.length<10)
-		{
-			alert("invalid phone no");
-			return false;
-		}
-		else if(filter.test(email.value))
-		{
-			alert("invalid email");
-			return false;
-		}
-		else if(des==""||des==null)
-		{
-			alert("description cannot be blank");
-			return false;
-		}
-		else if(cid==""||cid==null)
-		{
-			alert("company id  cannot be blank");
-			return false;
-		}
-		
-	}
-	
-
-
-</script>
-
 <meta charset="ISO-8859-1">
 <title></title>
-    <link rel="stylesheet" href="style1.css">
+    
 <style>
 .body{
    background-image:url('Startup-India-Scheme.jpg');
@@ -144,7 +88,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="login-page">
     <div class="form">
     
-    <form class="register-form" action="compReg" method="post">
+    <form class="register-form" onsubmit="return validate()" action="compReg" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
         <input type="text" placeholder="Name" name="compName"/>
@@ -160,3 +104,29 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     </div>
     </div>
 </body>
+<script>
+function validate()
+	{
+		const user = document.getElementById("uid").value;
+		const name = document.getElementById("name").value;
+		const gst = document.getElementById("gstid").value;
+		const phone = document.getElementById("phone").value;
+		const email = document.getElementById("email").value;
+		const des = document.getElementById("dse").value;
+
+if(user.trim()=="" || name.trim()=="" || gst.trim()==""  || email.trim()=="" || des.trim()=="")
+{
+	alert("Value/s cannot be blank");
+	return false;
+}
+else
+{
+	alert("hiiii")
+	return true;
+}
+
+}
+
+</script>
+
+</html>

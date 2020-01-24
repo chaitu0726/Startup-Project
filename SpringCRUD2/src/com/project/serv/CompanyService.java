@@ -1,6 +1,6 @@
 package com.project.serv;
 
-import com.project.bean.Company;
+import com.project.model.Company;
 
 public interface CompanyService {
 	public boolean insert(Company comp);

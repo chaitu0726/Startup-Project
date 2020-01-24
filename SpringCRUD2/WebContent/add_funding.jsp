@@ -6,9 +6,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
 <style>
-.body{
+body{
    background-image:url('Startup-India-Scheme.jpg');
   background-repeat:no-repeat;
   background-attachment:fixed;

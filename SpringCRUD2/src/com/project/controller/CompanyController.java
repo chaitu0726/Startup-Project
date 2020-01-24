@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.project.bean.Company;
+import com.project.model.Company;
 import com.project.serv.CompanyService;
 
 
@@ -37,7 +37,7 @@ public class CompanyController {
 		@RequestMapping(value="/compReg",method = RequestMethod.GET)
 		public String loginGet(HttpSession session)
 		{
-			System.out.println(session);
+			//System.out.println(session);
 			try {
 			if(session != null)
 				if((int)session.getAttribute("role") == 2)
@@ -55,7 +55,7 @@ public class CompanyController {
 		public String insert(@ModelAttribute("comp")Company comp ,ModelMap model) {
 			
 			
-			System.out.println("hey"+comp.getCompName());
+			//System.out.println("hey");
 			try {
 				if(companyService.insert(comp))
 					return "index";

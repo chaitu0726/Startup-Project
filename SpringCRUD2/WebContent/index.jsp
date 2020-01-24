@@ -88,11 +88,13 @@
             <div class="col-6" style="font-size:20px;">Login Form</div> 
             <div class="col-3"><br></div> 
            
-             <form class="Login-form" action="login" method="post">
+             <form  class="Login-form" onsubmit="return validate()" action="login" method="post">
            
-                 <input type="text" name ="username"placeholder="Username"/>
-                 <input type="password" name="password" placeholder="Password"/>
-                 <input type="submit" class="bg-success" value="Login"/>
+                 <input type="text" id ="uname" name ="username"  placeholder="Username"/>
+                 <span id="ures" class="text-danger"></span>
+                 <input type="password" id="pass" name="password" placeholder="Password"/>
+                 <span id="pres" class="text-danger"></span>
+                 <button type="submit" class="bg-success">Login</button>
             </form>
                  
             <div class="row  mt-4" >
@@ -105,8 +107,34 @@
          </div>
 
      </div>
+<script type="text/javascript">
+function validate()
+{
+var username = document.getElementById("uname");
+var password = document.getElementById("pass");
 
+	if(username.value.trim() =="" && password.value.trim() == "")
+		{
+		alert("Username and Password Cannot be blank");
+		return false;
+		}
+	else if(username.value.trim() =="")
+		{
+		alert("Username Cannot be blank");
+		return false;
+		
+		}
+	else if(password.value.trim() == "")
+		{
+		alert("Password Cannot be blank");		
+		return false;
+		}
+	else{
+		return true;
+	}
+}
+</script>
  
 </body>
-</body>
+
 </html>

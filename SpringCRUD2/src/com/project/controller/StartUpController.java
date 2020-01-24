@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.project.bean.Login;
-import com.project.bean.Project;
-import com.project.bean.StartUp;
+import com.project.model.Login;
+import com.project.model.Project;
+import com.project.model.StartUp;
 import com.project.serv.LoginSevice;
 import com.project.serv.StartUpService;
 
@@ -99,6 +99,12 @@ public class StartUpController
 		else if(lgn.getFlag() == 2)
 		{
 			model = new ModelAndView("company_home");
+			addUserInSession(lgn, session);
+			return model;
+		}
+		else if(lgn.getFlag() == 0)
+		{
+			model = new ModelAndView("admin_home");
 			addUserInSession(lgn, session);
 			return model;
 		}

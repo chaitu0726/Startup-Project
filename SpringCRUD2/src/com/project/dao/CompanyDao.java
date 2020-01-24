@@ -1,6 +1,6 @@
 package com.project.dao;
 
-import com.project.bean.Company;
+import com.project.model.Company;
 
 public interface CompanyDao {
 
