@@ -12,4 +12,6 @@ public interface StartUpDao {
 	public StartUp selectByEmail(String email);
 	public List<Project> selectAll();
 	public List<StartUp> selectStp();
+	public boolean addFund(Funding fund);
+	public int getId(String email);
 }

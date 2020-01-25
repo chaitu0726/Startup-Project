@@ -93,12 +93,12 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 
 <div class="login-page">
     <div class="form">
-    <form class="Bidding Details" action="#" method="post">
+    <form class="Bidding Details" action="addfunding" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
-        <input type="text" placeholder="Fund Amount"/>
+        <input type="text" name="fundAmount" placeholder="Fund Amount"/>
         Add Description
-        <textarea rows="5" cols="35" name="$$"></textarea>  
+        <textarea rows="5" cols="35" name="fundDescription"></textarea>  
         <input type="submit" class="bg-primary" value="Apply For Funding"/>
    
     </form>

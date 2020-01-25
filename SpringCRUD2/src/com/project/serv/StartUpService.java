@@ -13,4 +13,6 @@ public interface StartUpService {
 	public List<Project> selectAll();
 	public boolean isUsernameExist(String username);
 	public List<StartUp> selectStp();
+	public int getId(String email);
+	public boolean addFund(Funding fund);
 }

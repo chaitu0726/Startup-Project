@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.project.model.Funding;
 import com.project.model.Gst;
@@ -191,6 +195,32 @@ public class StartUpDaoImple implements StartUpDao {
 		System.out.println("selected stp");
 		return list;
 			
+	}
+
+	@Override
+	public boolean addFund(Funding fund) {
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		System.out.println(Integer.parseInt(sesion.getAttribute("id").toString()));
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		String flag = "yes";
+		String status="Applied";
+		String sql = "insert into funds(startup_id,fund_amount,fund_status,fund_description,flag)values(?,?,?,?,?)";
+		jt.update(sql, new Object[] {
+				id,
+				fund.getFundAmount(),
+				status,
+				fund.getFundDescription(),
+				flag
+		});
+		return true;
+	}
+
+	@Override
+	public int getId(String email) {
+		String sql = "select startup_id from startup where email =?";
+		Integer id =jt.queryForObject(sql,new Object[] {email},Integer.class);
+		return id.intValue();
 	}
 
 }

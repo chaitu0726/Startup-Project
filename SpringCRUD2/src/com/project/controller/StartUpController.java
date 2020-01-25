@@ -99,6 +99,9 @@ public class StartUpController
 			model = new ModelAndView("startup_home");
 			model.addObject("lists",list);
 			addUserInSession(lgn, session);
+			int id1 = startUpService.getId(lgn.getUsername());
+			session.setAttribute("id", id1);
+			System.out.println("here....");
 			return model;
 		}
 		else if(lgn.getFlag() == 2)
@@ -168,6 +171,7 @@ public class StartUpController
 		session.setAttribute("uname",l.getUsername());
 		session.setAttribute("pass", l.getPassword());
 		session.setAttribute("role", l.getFlag());
+		
 	}
 	
 	@RequestMapping("/logout")
@@ -202,4 +206,10 @@ public class StartUpController
 			return "demo";
 	}
 */
+	@RequestMapping(value="/addfunding",method = RequestMethod.POST)
+	public String addFund(@ModelAttribute("fund") Funding fund)
+	{
+		startUpService.addFund(fund);
+		return "success";
+	}
 }

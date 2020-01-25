@@ -69,5 +69,16 @@ public class StartUpServImpl implements StartUpService {
 		return  startUpDao.selectStp();
 	}
 
+	@Override
+	public int getId(String email) {
+		return startUpDao.getId(email);
+	}
+
+	@Override
+	public boolean addFund(Funding fund) {
+		// TODO Auto-generated method stub
+		return startUpDao.addFund(fund);
+	}
+
 
 }
