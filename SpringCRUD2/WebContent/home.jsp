@@ -8,9 +8,10 @@
  <link rel="stylesheet" href="style1.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
  <style>
- <style>
-.body{
+body{
    background-image:url('Startup-India-Scheme.jpg');
   background-repeat:no-repeat;
   background-attachment:fixed;
@@ -77,7 +78,7 @@
 
 }
 </style>
- </style>
+
 </head>
 <body>
  <div class="row bg-dark sticky-top" style="height: 50px">
@@ -90,13 +91,14 @@
     
 
     
-    <form class="register-form" action="add.htm" method="post">
+    <form class="register-form" onsubmit="return validate()" action="add.htm" method="post">
  
         
         <input type="text" name="name" placeholder="Company Name"/>
         <input type="text" name="gstId" placeholder="gst-Id"/>
         <input type="text" name="contactNo" placeholder="Phone No"/>
         <input type="text" id="email" name="email" placeholder="Email-Id"/>
+        <span id="avail" style="color:red"></span>
         <input type="text" name="discription" placeholder="Description"/>
         <input type="text" name="noOfEmployee" placeholder="No Of Employee"/>
 		<input type="text" name="pan" placeholder="Enter PAN"/>
@@ -109,8 +111,33 @@
     </div>
 </body>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#email").change(function(){
+		$.ajax({
+			url : 'check_avail',
+			data : {username : $("#email").val()},
+			success : function(data){
+				$("#avail").html(data);
+			}
+		});
+		
+	});
+});
 
+function validate()
+{
+var username = document.getElementById("email");
 
+	if(username.value.trim() =="")
+		{
+		document.getElementById("avail").innerHTML="email cannot blank";
+		return false;
+		}
+	
+	else{
+		return true;
+	}
+}
 </script>
 </html>
 

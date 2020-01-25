@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.Login;
@@ -168,4 +170,16 @@ public class StartUpController
 		session.invalidate();
 		return "index";
 	}
+	
+	@RequestMapping("/check_avail")
+	@ResponseBody
+	public String checkAvailability(@RequestParam String username)
+	{
+		//System.out.println("here...");
+		if(startUpService.isUsernameExist(username))
+			return "Email Already Registered";
+		else
+			return "Email is Available";
+	}
+	
 }

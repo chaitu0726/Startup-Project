@@ -8,6 +8,7 @@ import com.project.model.StartUp;
 public interface StartUpService {
 
 	boolean add(StartUp startup);
-	StartUp selectByEmail(String email);
-	List<Project> selectAll();
+	public StartUp selectByEmail(String email);
+	public List<Project> selectAll();
+	public boolean isUsernameExist(String username);
 }
