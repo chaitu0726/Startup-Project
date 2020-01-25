@@ -91,19 +91,27 @@ body{
     
 
     
-    <form class="register-form" onsubmit="return validate()" action="add.htm" method="post">
+    <form class="register-form" onsubmit="return validate()" action="add" method="post">
  
         
-        <input type="text" name="name" placeholder="Company Name"/>
-        <input type="text" name="gstId" placeholder="gst-Id"/>
-        <input type="text" name="contactNo" placeholder="Phone No"/>
+        <input type="text" id="name" name="name" placeholder="Company Name"/>
+        	<span id="avail1" style="color:red"></span>
+        <input type="text" id="gstid" name="gstId" placeholder="gst-Id"/>
+        	<span id="avail2" style="color:red"></span>
+        <input type="text" id="contact" name="contactNo" placeholder="Phone No"/>
+        	<span id="avail3" style="color:red"></span>
         <input type="text" id="email" name="email" placeholder="Email-Id"/>
-        <span id="avail" style="color:red"></span>
-        <input type="text" name="discription" placeholder="Description"/>
-        <input type="text" name="noOfEmployee" placeholder="No Of Employee"/>
-		<input type="text" name="pan" placeholder="Enter PAN"/>
-		<input type="text" name ="date" placeholder="Registarion Date in YYYY-MM-DD"/>
-		<input type="password" name="password" placeholder="Enter Password"/>
+        <span id="avail4" style="color:green"></span>
+        <input type="text" id="desc" name="discription" placeholder="Description"/>
+        	<span id="avail5" style="color:red"></span>
+        <input type="text" id="noe" name="noOfEmployee" placeholder="No Of Employee"/>
+        	<span id="avail6" style="color:red"></span>
+		<input type="text" id="pan" name="pan" placeholder="Enter PAN"/>
+			<span id="avail7" style="color:red"></span>
+		<input type="text" id="date" name ="date" placeholder="Registarion Date in YYYY-MM-DD"/>
+			<span id="avail8" style="color:red"></span>
+		<input type="password" id="pass" name="password" placeholder="Enter Password"/>
+        	<span id="avail9" style="color:red"></span>
         <input type="submit"/>
         <p class="message">Already Registered?<a href="login.jsp">Login</a></p>
     </form>
@@ -117,23 +125,73 @@ $(document).ready(function(){
 			url : 'check_avail',
 			data : {username : $("#email").val()},
 			success : function(data){
-				$("#avail").html(data);
+				$("#avail4").html(data);
 			}
 		});
 		
 	});
 });
-
+</script>
+<script>
 function validate()
 {
-var username = document.getElementById("email");
+var username = document.getElementById("email").value.trim();
+var id1 = document.getElementById("name").value.trim();
+var id2 = document.getElementById("gstid").value.trim();
+var id3 = document.getElementById("contact").value.trim();
+var id4 = document.getElementById("desc").value.trim();
+var id5 = document.getElementById("noe").value.trim();
+var id6 = document.getElementById("pan").value.trim();
+var id7 = document.getElementById("date").value.trim();
+var id8 = document.getElementById("pass").value.trim();
 
-	if(username.value.trim() =="")
+if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id7==""|| id8=="" ||username==""){
+	if(username =="")
 		{
-		document.getElementById("avail").innerHTML="email cannot blank";
-		return false;
+		document.getElementById("avail4").innerHTML="email cannot blank";
+		
 		}
+	if(id1 =="")
+	{
+	document.getElementById("avail1").innerHTML="Name cannot Empty";
+	}
+	if(id2 =="")
+	{
+	document.getElementById("avail2").innerHTML="Gst cannot Empty";
 	
+	}
+	if(id3 =="")
+	{
+	document.getElementById("avail3").innerHTML="contact cannot blank";
+	
+	}
+	if(id4 =="")
+	{
+	document.getElementById("avail5").innerHTML="desc cannot blank";
+	
+	}
+	if(id5 =="")
+	{
+	document.getElementById("avail6").innerHTML="No Of Emplyee cannot blank";
+	
+	}
+	if(id6 =="")
+	{
+	document.getElementById("avail7").innerHTML="pan cannot blank";
+	
+	}
+	if(id7 =="")
+	{
+	document.getElementById("avail8").innerHTML="date cannot blank";
+	
+	}
+	if(id8 =="")
+	{
+	document.getElementById("avail9").innerHTML="password cannot blank";
+	
+	}
+	return false;
+}
 	else{
 		return true;
 	}

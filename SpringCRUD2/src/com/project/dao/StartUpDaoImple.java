@@ -88,7 +88,7 @@ public class StartUpDaoImple implements StartUpDao {
 			sql = "insert into startup(description,no_of_Employee,email,flag)"
 					+ " values(?,?,?,?)";
 			
-			System.out.println(sql);
+			 System.out.println(sql);
 			int k = jt.update(sql,new Object[] {
 				startup.getDiscription(),
 				startup.getNoOfEmployee(),
