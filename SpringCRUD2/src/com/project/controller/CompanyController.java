@@ -1,6 +1,8 @@
 package com.project.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +11,13 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.project.model.Company;
+import com.project.model.Login;
+import com.project.model.Project;
 import com.project.serv.CompanyService;
-
+import com.project.model.Funding;
 
 
 @Controller
@@ -24,15 +29,7 @@ public class CompanyController {
 	
 		public void setCompanyService(CompanyService companyService) {
 			this.companyService = companyService;
-		}
-
-
-/*		@RequestMapping("/startup.htm")
-		public String Login(ModelMap model) {
-			
-			return "login";
-		}
-*/		
+		}	
 		
 		@RequestMapping(value="/compReg",method = RequestMethod.GET)
 		public String loginGet(HttpSession session)
@@ -67,4 +64,34 @@ public class CompanyController {
 				return "company_register";
 			}
 		}
+		
+		@RequestMapping(value = "/comProjectAdd", method = RequestMethod.POST)
+		public String addProject(@ModelAttribute("pro") Project pro ,HttpSession session ) {
+			
+			
+			System.out.println("inside the cntr");
+			Login lg= new Login();
+			lg.setUsername(session.getAttribute("uname").toString());
+			
+			lg.setFlag(Integer.parseInt((session.getAttribute("role").toString())));	
+			
+			companyService.addProject(pro,lg);
+			
+			return "project_added_msg";
+		}
+		/*
+		@RequestMapping(value = "/list_stp_comp_cntr", method = RequestMethod.GET)
+		public ModelAndView selectStpFunds( HttpSession session ) {
+			
+			System.out.println("inside the cntr");
+			
+			ModelAndView model = new ModelAndView("list_stp_comp"); 
+			
+			List<Funding> list=companyService.selectStp();
+			
+			model.addObject("lists", list);
+			
+			return model;
+		}
+	*/	
 }

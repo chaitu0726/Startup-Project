@@ -12,6 +12,7 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import com.project.model.Funding;
 import com.project.model.Gst;
 import com.project.model.Project;
 import com.project.model.StartUp;
@@ -158,6 +159,38 @@ public class StartUpDaoImple implements StartUpDao {
 		});
 		
 		return list;
+	}
+	
+	@Override
+	public List<StartUp> selectStp() {
+		
+		List<StartUp> list = new ArrayList<StartUp>();
+		System.out.println("inside select stp");
+		String sql= "select * from startup";
+		list = jt.query(sql, new ResultSetExtractor<List<StartUp>>(){
+
+			@Override
+			public List<StartUp> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				List<StartUp> li = new ArrayList<StartUp>();
+				
+				while(rs.next())
+				{
+					StartUp st = new StartUp();
+					
+					st.setStartUpId(rs.getInt(5));
+					st.setNoOfEmployee(rs.getInt(3));
+					st.setEmail(rs.getString(4));
+					st.setDiscription(rs.getString(2));
+					
+					li.add(st);
+				}
+				return li;
+			}
+	
+		});
+		System.out.println("selected stp");
+		return list;
+			
 	}
 
 }

@@ -1,9 +1,14 @@
 package com.project.serv;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.model.Company;
+import com.project.model.Funding;
+import com.project.model.Login;
+import com.project.model.Project;
 import com.project.dao.CompanyDao;
 import com.project.serv.CompanyService;
 
@@ -29,4 +34,11 @@ public class CompanyServiceImpl implements CompanyService {
 		return false;
 	}
 
+	@Override
+	public boolean addProject(Project pro, Login lg) {
+		
+		return companyDao.addProject(pro,lg);
+	}
+
+	
 }

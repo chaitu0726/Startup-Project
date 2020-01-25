@@ -113,7 +113,7 @@ body{
 		<input type="password" id="pass" name="password" placeholder="Enter Password"/>
         	<span id="avail9" style="color:red"></span>
         <input type="submit"/>
-        <p class="message">Already Registered?<a href="login.jsp">Login</a></p>
+        <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
     </div>
     </div>

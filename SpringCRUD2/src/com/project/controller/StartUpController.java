@@ -7,13 +7,16 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.model.Funding;
 import com.project.model.Login;
 import com.project.model.Project;
 import com.project.model.StartUp;
@@ -100,7 +103,9 @@ public class StartUpController
 		}
 		else if(lgn.getFlag() == 2)
 		{
+			List<StartUp> list = startUpService.selectStp();
 			model = new ModelAndView("company_home");
+			model.addObject("lists",list);
 			addUserInSession(lgn, session);
 			return model;
 		}
@@ -138,6 +143,7 @@ public class StartUpController
 		}
 		else if(Integer.parseInt(session.getAttribute("role").toString()) == 2)
 		{
+			
 			model = new ModelAndView("company_home");
 			return model;
 		}
@@ -172,14 +178,28 @@ public class StartUpController
 	}
 	
 	@RequestMapping("/check_avail")
-	@ResponseBody
+	//@ResponseBody
 	public String checkAvailability(@RequestParam String username)
 	{
-		//System.out.println("here...");
 		if(startUpService.isUsernameExist(username))
 			return "Email Already Registered";
 		else
 			return "Email is Available";
 	}
 	
+	@RequestMapping(value="/apply",method = RequestMethod.GET)
+	public String applyy(Model model, @RequestParam (value="Id") int id,HttpSession session)
+	{
+		System.out.println(id);
+		return "demo";
+	}
+/*	@RequestMapping(value="/apply",method = RequestMethod.GET)
+	public String apply(Model model, @RequestParam (value="Id") int id,HttpSession session)
+	{
+		if(id != Integer.parseInt(session.getAttribute("id").toString()))
+			return "startup_home";
+		else 
+			return "demo";
+	}
+*/
 }

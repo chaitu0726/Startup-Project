@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.project.model.Funding;
 import com.project.model.Project;
 import com.project.model.StartUp;
 import com.project.dao.StartUpDao;
@@ -61,5 +62,12 @@ public class StartUpServImpl implements StartUpService {
 		else
 			return false;
 	}
+	
+	@Override
+	public List<StartUp> selectStp() {
+		
+		return  startUpDao.selectStp();
+	}
+
 
 }

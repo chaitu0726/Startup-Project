@@ -2,12 +2,14 @@ package com.project.dao;
 
 import java.util.List;
 
+import com.project.model.Funding;
 import com.project.model.Project;
 import com.project.model.StartUp;
 
 public interface StartUpDao {
 
 	boolean add(StartUp startup);
-	StartUp selectByEmail(String email);
-	List<Project> selectAll();
+	public StartUp selectByEmail(String email);
+	public List<Project> selectAll();
+	public List<StartUp> selectStp();
 }
