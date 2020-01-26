@@ -113,26 +113,28 @@ function validate()
 var username = document.getElementById("uname");
 var password = document.getElementById("pass");
 
-	if(username.value.trim() =="" && password.value.trim() == "")
+	if(username.value.trim() =="" || password.value.trim() == "")
 		{
-		alert("Username and Password Cannot be blank");
-		return false;
-		}
-	else if(username.value.trim() =="")
-		{
-		alert("Username Cannot be blank");
-		return false;
-		
-		}
-	else if(password.value.trim() == "")
-		{
-		alert("Password Cannot be blank");		
-		return false;
+		 if(username.value.trim() =="")
+			{
+				document.getElementById("ures").innerHTML = "Username cannot be blank";
+			}	
+		 if(password.value.trim() == "")
+			{
+				 document.getElementById("pres").innerHTML = "Password cannot be blank";
+			}
+		 return false;
 		}
 	else{
 		return true;
 	}
 }
+</script>
+
+<script type="text/javascript">
+$('form').on('submit',function(){
+    alert('submitted');
+});
 </script>
  
 </body>

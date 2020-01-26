@@ -201,7 +201,6 @@ public class StartUpDaoImple implements StartUpDao {
 	public boolean addFund(Funding fund) {
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpSession sesion = sra.getRequest().getSession();
-		System.out.println(Integer.parseInt(sesion.getAttribute("id").toString()));
 		int id = Integer.parseInt(sesion.getAttribute("id").toString());
 		String flag = "yes";
 		String status="Applied";

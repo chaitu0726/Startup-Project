@@ -146,19 +146,26 @@ public class StartUpController
 		}
 		else if(Integer.parseInt(session.getAttribute("role").toString()) == 2)
 		{
-			
+				
+			List<StartUp> list = startUpService.selectStp();
 			model = new ModelAndView("company_home");
+			model.addObject("lists",list);
+			return model;
+		}
+		else if(Integer.parseInt(session.getAttribute("role").toString()) == 0)
+		{
+			model = new ModelAndView("admin_home");
 			return model;
 		}
 		else
 		{
 		
-			model = new ModelAndView("bidding");
+			model = new ModelAndView("index");
 			return model;
 		}
 		}catch(Exception e)
 		{	
-			model = new ModelAndView("bidding");
+			model = new ModelAndView("index");
 			return model;
 		}
 		
