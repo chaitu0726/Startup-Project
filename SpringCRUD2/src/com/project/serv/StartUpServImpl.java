@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.project.model.Bidding;
 import com.project.model.Funding;
 import com.project.model.Project;
 import com.project.model.StartUp;
@@ -78,6 +79,30 @@ public class StartUpServImpl implements StartUpService {
 	public boolean addFund(Funding fund) {
 		// TODO Auto-generated method stub
 		return startUpDao.addFund(fund);
+	}
+
+	@Override
+	public Project selectById(int id) {
+		
+		return startUpDao.selectById(id);
+	}
+
+	@Override
+	public boolean addBid(Bidding bid) {
+		
+		return startUpDao.addBid(bid);
+	}
+
+	@Override
+	public List<Project> startupProjetcList() {
+		
+		return startUpDao.startupProjetcList();
+	}
+
+	@Override
+	public List<Bidding> startupBidList() {
+		
+		return startUpDao.startupBidList();
 	}
 
 

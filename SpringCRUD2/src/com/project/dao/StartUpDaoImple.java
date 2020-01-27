@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.project.model.Bidding;
 import com.project.model.Funding;
 import com.project.model.Gst;
 import com.project.model.Project;
@@ -45,8 +46,6 @@ public class StartUpDaoImple implements StartUpDao {
 			//String gstId = startup.getGstId();
 			//
 	
-			
-			//setAutoCommit(false);
 			String sql = "select * from gst where gst_id = ? and pan =?";
 			Gst st = jt.queryForObject(sql,new Object [] {startup.getGstId(),startup.getPan()},new RowMapper<Gst>(){
 
@@ -153,8 +152,9 @@ public class StartUpDaoImple implements StartUpDao {
 				while(rs.next())
 				{
 					Project st = new Project();
-					st.setProjectName(rs.getString(2));
 					st.setProjetcId(rs.getInt(1));
+					st.setProjectName(rs.getString(2));
+					st.setComapanyId(rs.getInt(7));
 					li.add(st);
 				}
 				return li;
@@ -220,6 +220,101 @@ public class StartUpDaoImple implements StartUpDao {
 		String sql = "select startup_id from startup where email =?";
 		Integer id =jt.queryForObject(sql,new Object[] {email},Integer.class);
 		return id.intValue();
+	}
+
+	@Override
+	public Project selectById(int id) {
+		String sql = "select * from project where project_id =?";
+		Project temp = jt.queryForObject(sql, new Object [] {id}, new RowMapper<Project>() {
+
+			@Override
+			public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Project st = new Project();
+				st.setProjetcId(rs.getInt(1));
+				st.setProjectName(rs.getString(2));
+				st.setProjectTechnology(rs.getString(3));
+				st.setProjectDuration(rs.getString(4));
+				st.setProjectDescription(rs.getString(5));
+				st.setProjectBidAmount(rs.getString(6));
+				st.setComapanyId(rs.getInt(7));
+				return st;
+			}
+			
+		});
+		return temp;
+	}
+
+	@Override
+	public boolean addBid(Bidding bid) {
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		String flag = "yes";
+		String status = "applied";
+		String sql = "insert into bidding_details(project_id,company_id,startup_id,bid_amount,bid_duration,bid_status,flag) values (?,?,?,?,?,?,?)";
+		jt.update(sql, new Object[] {
+				bid.getProjectId(),
+				bid.getCompanyId(),
+				id,
+				bid.getBidAmount(),
+				bid.getBidDuration(),
+				status,flag
+		});
+		return true;
+	}
+
+	@Override
+	public List<Project> startupProjetcList() {
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		String sql="select * from project  where project_id  in (select project_id from bidding_details where startup_id =? and bid_status ='applied')";
+		
+		List<Project> plist = jt.query(sql,new Object[] {id}, new ResultSetExtractor<List<Project>>(){
+
+			@Override
+			public List<Project> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				List<Project> plist = new ArrayList<Project>();
+				while(rs.next())
+				{
+					Project project = new Project();
+					project.setProjectName(rs.getString(2));
+					project.setProjectTechnology(rs.getString(3));
+					project.setProjectDuration(rs.getString(4));
+					project.setProjectDescription(rs.getString(5));
+					project.setProjectBidAmount(rs.getString(6));
+					plist.add(project);
+				}
+				return plist;
+			}});
+		
+		return plist;
+	}
+
+	@Override
+	public List<Bidding> startupBidList() {
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		
+		String sql =" select * from bidding_details where startup_id = ? and bid_status='applied'";
+		List<Bidding> blist = jt.query(sql,new Object[] {id}, new ResultSetExtractor<List<Bidding>>() {
+
+			@Override
+			public List<Bidding> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				List<Bidding> blist = new ArrayList<Bidding>();
+				
+				while(rs.next())
+				{
+					Bidding bid = new Bidding();
+					bid.setBidAmount(rs.getDouble(5));
+					bid.setBidDuration(rs.getString(6));
+					blist.add(bid);
+				}
+				
+				return blist;
+			}});
+		return blist;
 	}
 
 }

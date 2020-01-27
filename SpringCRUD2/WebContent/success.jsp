@@ -8,6 +8,6 @@
 </head>
 <body>
 <h3>Details Added Successfully....</h3><br><br>
-<a href="admin_home.jsp">Back..</a>
+<a href="home_startup">Home</a>
 </body>
 </html>

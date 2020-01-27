@@ -2,6 +2,7 @@ package com.project.dao;
 
 import java.util.List;
 
+import com.project.model.Bidding;
 import com.project.model.Funding;
 import com.project.model.Project;
 import com.project.model.StartUp;
@@ -14,4 +15,8 @@ public interface StartUpDao {
 	public List<StartUp> selectStp();
 	public boolean addFund(Funding fund);
 	public int getId(String email);
+	public Project selectById(int id);
+	public boolean addBid(Bidding bid);
+	public List<Project> startupProjetcList();
+	public List<Bidding> startupBidList();
 }

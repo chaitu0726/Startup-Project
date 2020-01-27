@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -95,16 +94,31 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-5 text-light" style="font-size: 30px">Bidding Details</div>
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
+<div class="row" style="height:130px;"></div>
+<div class="row">
+<div class="col-2"></div>
+<div class="col-6 jumbotron container">
+<blockquote style="font-size: 30px;">Project Details</blockquote>
 
-<div class="login-page">
+Project Name : ${projectList.projectName}<br>
+Technology   : ${projectList.projectTechnology}<br>
+Duration     : ${projectList.projectDuration}<br>
+Description  : ${projectList.projectDescription}<br>
+Amount       : ${projectList.projectBidAmount}<br>
+
+</div>
+<div class="col-4">
     <div class="form">
-    <form class="Bidding Details">
+    <form action="applyBid" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
-        <input type="text" placeholder="Bid Amount"/>
-        <input type="text" placeholder="Bid-Duration"/>
+        <input type="text" name="bidAmount" placeholder="Bid Amount"/>
+        <input type="text" name="bidDuration" placeholder="Bid-Duration"/>
+        <input type="hidden" name="projectId"  value="${projectList.projetcId}"/>
+        <input type="hidden" name="companyId" value="${projectList.comapanyId}"/>
         <input type="submit" class ="bg-primary" value="Apply Bid"/>
     </form>
+</div>
     </div>
     </div>
     </c:if>

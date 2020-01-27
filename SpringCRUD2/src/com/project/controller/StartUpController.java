@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.model.Bidding;
 import com.project.model.Funding;
 import com.project.model.Login;
 import com.project.model.Project;
@@ -188,21 +189,35 @@ public class StartUpController
 		return "index";
 	}
 	
-	@RequestMapping("/check_avail")
-	//@ResponseBody
+	@RequestMapping(value="/check_avail",method = RequestMethod.GET)
+	@ResponseBody
 	public String checkAvailability(@RequestParam String username)
 	{
 		if(startUpService.isUsernameExist(username))
 			return "Email Already Registered";
+		else if(username == "")
+			return "Email Cannot blank";
 		else
 			return "Email is Available";
 	}
 	
 	@RequestMapping(value="/apply",method = RequestMethod.GET)
-	public String applyy(Model model, @RequestParam (value="Id") int id,HttpSession session)
+	public ModelAndView applyy(Model model, @RequestParam (value="Id") int id,HttpSession session)
 	{
-		System.out.println(id);
-		return "demo";
+		ModelAndView modelView;
+		//try {
+			Project project = startUpService.selectById(id);
+			//if(project !=null)
+			//{
+				modelView = new ModelAndView("bidding");
+				modelView.addObject("projectList",project);
+				return modelView;
+			//}
+		//}catch(Exception e)
+		/*{
+			modelView = new ModelAndView("");
+		}
+		return modelView;*/
 	}
 /*	@RequestMapping(value="/apply",method = RequestMethod.GET)
 	public String apply(Model model, @RequestParam (value="Id") int id,HttpSession session)
@@ -218,5 +233,23 @@ public class StartUpController
 	{
 		startUpService.addFund(fund);
 		return "success";
+	}
+	
+	@RequestMapping(value="/applyBid",method = RequestMethod.POST)
+	public String applyBid(@ModelAttribute("bid") Bidding bid)
+	{
+		startUpService.addBid(bid);
+			return "success";
+	}
+	
+	@RequestMapping(value="/appliedProject",method = RequestMethod.GET)
+	public ModelAndView applyProject()
+	{
+		ModelAndView  model = new ModelAndView("applied_project");
+		List<Project> list = startUpService.startupProjetcList();
+		List<Bidding> listBid = startUpService.startupBidList();
+		model.addObject("startupProjetcList", list);
+		model.addObject("startupBidList",listBid);
+			return model;
 	}
 }

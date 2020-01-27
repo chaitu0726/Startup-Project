@@ -23,6 +23,9 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
 
+<c:forEach  items="${startupProjetcList}" var="temp">
+	${temp.projectName}<br>
+</c:forEach>
 </c:if>
 </body>
 </html>
