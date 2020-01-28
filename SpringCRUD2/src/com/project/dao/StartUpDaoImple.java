@@ -249,6 +249,10 @@ public class StartUpDaoImple implements StartUpDao {
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpSession sesion = sra.getRequest().getSession();
 		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		String Sql="select count(bid_id) from bidding_details where project_id = ? and startup_id = ?";
+		 Integer count = jt.queryForObject(Sql, new Object[] {bid.getProjectId(),id}, Integer.class);
+		if(count == 1)
+			return false;
 		String flag = "yes";
 		String status = "applied";
 		String sql = "insert into bidding_details(project_id,company_id,startup_id,bid_amount,bid_duration,bid_status,flag) values (?,?,?,?,?,?,?)";
@@ -297,7 +301,7 @@ public class StartUpDaoImple implements StartUpDao {
 		HttpSession sesion = sra.getRequest().getSession();
 		int id = Integer.parseInt(sesion.getAttribute("id").toString());
 		
-		String sql =" select * from bidding_details where startup_id = ? and bid_status='applied'";
+		String sql ="select * from bidding_details where startup_id = ? and bid_status='applied'";
 		List<Bidding> blist = jt.query(sql,new Object[] {id}, new ResultSetExtractor<List<Bidding>>() {
 
 			@Override
@@ -330,7 +334,7 @@ public class StartUpDaoImple implements StartUpDao {
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpSession sesion = sra.getRequest().getSession();
 		int id = Integer.parseInt(sesion.getAttribute("id").toString());
-		String sql ="select project_name from project where project_id in(select project_id from bidding_details where startup_id = ? and bid_status='select')";
+		String sql ="select project_name from project where project_id in(select project_id from bidding_details where startup_id = ? and bid_status='selected')";
 		List<String> selectProjectList = jt.queryForList(sql, new Object[] {id}, String.class);
 		return selectProjectList;
 	}

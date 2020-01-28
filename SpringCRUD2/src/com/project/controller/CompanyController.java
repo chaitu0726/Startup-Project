@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.project.model.Bidding;
 import com.project.model.Company;
 import com.project.model.Login;
 import com.project.model.Project;
@@ -92,4 +93,64 @@ public class CompanyController {
 			model.addObject("startupList", sname);
 			return model;
 		}
+		
+		
+		
+		@RequestMapping(value = "/list_stp_comp_cntr", method = RequestMethod.GET)
+		public ModelAndView selectStpFunds( HttpSession session ) {
+		
+			ModelAndView model = new ModelAndView("list_stp_comp"); 
+			
+			List<Integer>sid = new ArrayList<Integer>();
+			List<Funding> list=companyService.selectStp();
+			
+			for (Funding fund : list) {
+				sid.add(fund.getStartupId());
+			}
+			List<String>sname = companyService.sname(sid);
+			
+			model.addObject("lists", list);
+			model.addObject("startupname", sname);
+			
+			return model;
+		}
+		
+		@RequestMapping(value = "/list_stp_apply_bidding")
+		public ModelAndView selectStpBid() {
+			
+			ModelAndView model =new ModelAndView("list_proj_apply_stp");
+			List<Integer>sid = new ArrayList<Integer>();
+			List<Integer>pid=new ArrayList<Integer>();
+			
+			//Get startup list from db
+			List<Bidding> list=companyService.selectStpBid();
+			
+			//using startupID get startup name
+			for (Bidding fund1 : list) {
+				sid.add(fund1.getStartupId());
+			}
+			List<String>sname = companyService.sname(sid);
+			
+			//using projectId get project name
+			for(Bidding bid : list) {
+				pid.add(bid.getProjectId());
+			}
+			List<String> pname=companyService.pname(pid);
+			
+			
+			model.addObject("lists", list);
+			model.addObject("startupname", sname);
+			model.addObject("projectname", pname);
+			
+			return model;
+		}
+		
+		@RequestMapping(value = "/selectProject")
+		public String  selectedProject(@ModelAttribute("pid") Project pid) {
+			
+			companyService.selectProject(pid.getProjetcId());
+			
+			return "selectedProject";
+		}
+		
 }

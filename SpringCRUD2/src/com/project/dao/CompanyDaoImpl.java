@@ -15,7 +15,9 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler;
 
+import com.project.model.Bidding;
 import com.project.model.Company;
 import com.project.model.Funding;
 import com.project.model.Login;
@@ -35,7 +37,8 @@ public class CompanyDaoImpl implements CompanyDao{
 
 	@Override
 	public boolean insert(Company comp) {
-		String sql;
+		return false;
+		/*String sql;
 		String flag ="yes";
 		
 		sql="select * from gst where gst_id=? and pan=?";
@@ -120,7 +123,7 @@ public class CompanyDaoImpl implements CompanyDao{
 		
 		System.out.println("inserted into gst_company");
 		
-		return true;
+		return true;*/
 	
 	}
 
@@ -182,7 +185,7 @@ public class CompanyDaoImpl implements CompanyDao{
 				}
 				return list;
 			}
-			
+				
 		});
 		return flist;
 	}
@@ -196,6 +199,101 @@ public class CompanyDaoImpl implements CompanyDao{
 			name.add(s);
 		}
 		return name;
+	}
+//////////////////////////////////////////
+	@Override
+	public List<Funding> selectStp() {
+List<Funding> list = new ArrayList<Funding>();
+		
+		String sql="select *from funds";
+		list = jt.query(sql, new ResultSetExtractor<List<Funding>>(){
+
+			@Override
+			public List<Funding> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				List<Funding> li = new ArrayList<Funding>();
+				
+				while(rs.next())
+				{
+					Funding st = new Funding();
+					st.setStartupId(rs.getInt(2));
+					st.setFundAmount(rs.getDouble(4));
+					st.setFundStatus(rs.getString(5));
+					st.setFundDescription(rs.getString(6));
+					li.add(st);
+				}
+				return li;
+			}
+	
+		});
+
+		return list;
+	}
+
+	@Override
+	public List<Bidding> selectStpBid() {
+
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		
+		
+		List<Bidding> list = new ArrayList<Bidding>();
+		
+		String sql="select *from bidding_details where bid_status='applied' and company_id=?";
+		list = jt.query(sql, new Object[] { id } , new ResultSetExtractor<List<Bidding>>(){
+
+			@Override
+			public List<Bidding> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				List<Bidding> li = new ArrayList<Bidding>();
+				
+				while(rs.next())
+				{
+					Bidding st = new Bidding();
+					st.setBidId(rs.getInt(1));
+					st.setProjectId(rs.getInt(2));
+					st.setCompanyId(rs.getInt(3));
+					st.setStartupId(rs.getInt(4));
+					st.setBidAmount(rs.getDouble(5));
+					st.setBidDuration(rs.getString(6));
+					st.setBidStatus(rs.getString(7));
+					st.setFlag(rs.getString(8));
+					
+					li.add(st);
+				}
+				return li;
+			}
+			
+		});
+		
+		return list;
+	}
+	
+	@Override
+	public void selectProject(int projetcId) {
+
+		//////////////////////////////////
+		///update bidding_details set bid_status = 'rejected' where project_id = ?  and company_id = ? and bid_status = 'applied'
+		//////////////////////////////
+		String sql="update bidding_details set bid_status='selected' where bid_id=?";
+		jt.update(sql,new Object[] {projetcId});
+		
+	}
+
+	@Override
+	public List<String> pname(List<Integer> pid) {
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		 
+		List<String>projectname  = new ArrayList<String>();
+		
+		for (Integer integer : pid) {
+			
+			String sql = "select project_name from project where project_id=? and company_id=?";
+			String p = jt.queryForObject(sql,new Object[] { integer, id },String.class);
+			projectname.add(p);
+		}
+		return projectname;
 	}
 	
 

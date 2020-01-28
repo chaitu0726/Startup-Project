@@ -2,6 +2,7 @@ package com.project.serv;
 
 import java.util.List;
 
+import com.project.model.Bidding;
 import com.project.model.Company;
 import com.project.model.Funding;
 import com.project.model.Login;
@@ -13,5 +14,10 @@ public interface CompanyService {
 	 boolean addProject(Project pro,Login lg);
 	 public List<Funding> fundList();
 	 public List<String> sname(List<Integer> sname);
+	public List<Funding> selectStp();
+	public List<Bidding> selectStpBid();
+	public void selectProject(int projetcId);
+	public List<String> pname(List<Integer> pid);
+	
 	 
 }

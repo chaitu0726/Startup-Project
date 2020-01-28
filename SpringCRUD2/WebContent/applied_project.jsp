@@ -23,20 +23,52 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
 
+<div class="container mt-2">
 <div class="row">
-<div class="col-2"></div>
-
-	<div class="col-4 mt-1 jumbotron">
-		<c:forEach  items="${startupProjetcList}" var="temp">
-		${temp.projectName}<br>
-		</c:forEach>
+	<div class="col-3">
+		
+		<table class="table">
+  			<thead>
+    			<tr class="table-danger">
+     				<th scope="col"></th>
+      				<th scope="col">Startup Name</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  			
+  				<c:forEach items="${startupProjectList}" var="temp">
+      				<tr class="table-info">
+      				<th></th>
+      				<th scope="row">${temp.projectName}</th>
+   				</c:forEach>
+   			
+   			</tbody>
+   		</table>	
 	</div>
-	<div class="col-3 mt-1 jumbotron">
-		<c:forEach items="${startupBidList}" var="copy">
-		${copy.bidAmount}
-		${copy.bidDuration}<br>
-		</c:forEach>
-	</div>
+	   
+  	<div class="col-9">
+  	 
+ 		<table class="table">	 	
+  			<thead>
+    			<tr class="table-danger">
+     				<th scope="col"></th>
+    				<th scope="col">Amount</th>
+       				<th scope="col">Duration</th>
+       				
+  				</tr>
+  			</thead>
+   			<tbody>
+   				<c:forEach items="${startupBidList}" var="copy">
+   				<tr class="table-info">
+   					<th scope="col"></th>
+      				<td>${copy.bidAmount}</td>
+      				<td>${copy.bidDuration}</td>
+ 					<tr>
+ 	 			 </c:forEach>
+   			</tbody>   		
+		</table>	
+   </div>
+</div> 	
 </div>
 </c:if>
 </body>

@@ -38,49 +38,62 @@ a:hover {
 
 
 	<c:if test="${sessionScope.uname !=null && sessionScope.role == 2}">
-<div >
+<div>
 <div class="row bg-dark sticky-top " >
 		<div class="col-5"></div>
-		<div class="col-1" ><h5 style="height:60px; text-align: center; padding:15px"><a href="#">Home</a></h5></div>
+		<div  class="col-3">Funding List</div>
+		<div class="col-1" ><h5 style="height:60px; text-align: center; padding:15px"><a href="home_startup">Home</a></h5></div>
 		<div class="col-1" ><h5 style="height:60px; text-align: center; padding:15px"><a href="logout">Logout</a></h5></div>
 		<div class="col-1"></div>
 	</div>
-
-<div class="container">
-
-<div class="col-12" ><h2 style="background-color:lightgreen;  height:70px; text-align: center; padding:10px"> Startup's List who Applied for Funding </h2></div>
-
-
-<!-- ----------------------------------------------------------------------------------------------------------------- -->
-
-<table class="table">
-  <thead>
-    <tr class="table-danger">
-     <th scope="col"></th>
-      <th scope="col">Fund status</th>
-      <th scope="col">Fund Description</th>
-      <th scope="col">Fund Amount</th>
-       <th scope="col">Fix Meeting</th>
-    </tr>
-  </thead>
-
-  <tbody>
-  <c:forEach items="${lists}" var="temp">
-    <tr class="table-info">
-      <th scope="row"></th>
-      <td>${temp.fundStatus}</td>
-      <td>${temp.fundDescription}</td>
-       <td>${temp.fundAmount}</td>
-       <td class="bg-light" ><a href="#">Fix Meeting</a></td>
-    </tr>
-
-    
-    </c:forEach>
-  </tbody>
-</table>		
-		
-<!-- ------------------------------------------------------------------------------------------------------------------ -->
 </div>
+<div class="container mt-2">
+<div class="row">
+	<div class="col-3">
+		
+		<table class="table">
+  			<thead>
+    			<tr class="table-danger">
+     				<th scope="col"></th>
+      				<th scope="col">Startup Name</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  			
+  				<c:forEach items="${startupname}" var="temp">
+      				<tr class="table-info">
+      				<th></th>
+      				<th scope="row">${temp}</th>
+   				</c:forEach>
+   			
+   			</tbody>
+   		</table>	
+	</div>
+	   
+  	<div class="col-9">
+  	 
+ 		<table class="table">	 	
+  			<thead>
+    			<tr class="table-danger">
+     				<th scope="col"></th>
+    				<th scope="col">Description</th>
+       				<th scope="col">Amount</th>
+       				<th scope="col"></th>
+  				</tr>
+  			</thead>
+   			<tbody>
+   				<c:forEach items="${lists}" var="copy">
+   				<tr class="table-info">
+   					<th scope="col"></th>
+      				<td>${copy.fundDescription}</td>
+      				<td>${copy.fundAmount}</td>
+       				<td class="bg-light" ><a href="fixed_meeting.jsp">Fix Meeting</a></td>
+ 					<tr>
+ 	 			 </c:forEach>
+   			</tbody>   		
+		</table>	
+   </div>
+</div> 	
 </div>
 </c:if>
 </body>

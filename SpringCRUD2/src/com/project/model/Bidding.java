@@ -9,10 +9,24 @@ public class Bidding {
 	private double bidAmount;
 	private String bidDuration;
 	private String bidStatus;
+	private String flag;
 	
 	
 	
-	
+	public String getFlag() {
+		return flag;
+	}
+
+
+
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+
+
+
 	public Bidding() {
 		super();
 		// TODO Auto-generated constructor stub

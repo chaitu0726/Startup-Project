@@ -23,14 +23,29 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
 
+<div class="container mt-2">
 <div class="row">
-<div class="col-4"></div>
-	<div class="col-4 mt-1 jumbotron" style="height:1px;">
-		<c:forEach  items="${selectList}" var="temp">
-		${temp}<br>
-		</c:forEach>
+	<div class="col-3">
+		
+		<table class="table">
+  			<thead>
+    			<tr class="table-danger">
+     				<th scope="col"></th>
+      				<th scope="col">Project Name</th>
+  				</tr>
+  			</thead>
+  			<tbody>
+  			
+  				<c:forEach items="${selectList}" var="temp">
+      				<tr class="table-info">
+      				<th></th>
+      				<th scope="row">${temp}</th>
+   				</c:forEach>
+   			
+   			</tbody>
+   		</table>	
 	</div>
-</div>
+	   </div></div>
 </c:if>
 </body>
 </html>

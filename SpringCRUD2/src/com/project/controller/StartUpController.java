@@ -4,12 +4,10 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.connector.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,6 +88,9 @@ public class StartUpController
 	public ModelAndView save(@ModelAttribute("lg") Login lg,HttpSession session)
 	{
 		ModelAndView model; 
+		
+		
+		
 		//System.out.println("hii");
 		try {
 				Login lgn = loginService.login(lg);
@@ -226,8 +227,13 @@ public class StartUpController
 	@RequestMapping(value="/applyBid",method = RequestMethod.POST)
 	public String applyBid(@ModelAttribute("bid") Bidding bid)
 	{
-		startUpService.addBid(bid);
-			return "success";
+		
+		if(startUpService.addBid(bid))
+				return "success";
+		else
+			return "fail";
+			
+			
 	}
 	
 	@RequestMapping(value="/appliedProject",method = RequestMethod.GET)
@@ -236,7 +242,7 @@ public class StartUpController
 		ModelAndView  model = new ModelAndView("applied_project");
 		List<Project> list = startUpService.startupProjetcList();
 		List<Bidding> listBid = startUpService.startupBidList();
-		model.addObject("startupProjetcList", list);
+		model.addObject("startupProjectList", list);
 		model.addObject("startupBidList",listBid);
 			return model;
 	}
@@ -248,7 +254,6 @@ public class StartUpController
 		ModelAndView model = new ModelAndView("selected_project");
 		 List<String> selectList =  startUpService.selectList();
 		 model.addObject("selectList", selectList);
-		
 		return model;
 		
 	}

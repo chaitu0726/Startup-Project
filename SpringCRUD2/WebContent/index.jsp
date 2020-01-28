@@ -1,6 +1,6 @@
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,9 +92,9 @@
             <div class="col-6" style="font-size:20px;">Login Form</div> 
             <div class="col-3"><br></div> 
            
-             <form  class="Login-form" onsubmit="return validate()" action="login" method="post">
+             <form  class="Login-form"   action="login" method="post">
            
-                 <input type="text" id ="uname" name ="username"  placeholder="Username"/>
+                 <input type="text"  id ="uname" name ="username"  placeholder="Username"/>
                  <span id="ures" class="text-danger"></span>
                  <input type="password" id="pass" name="password" placeholder="Password"/>
                  <span id="pres" class="text-danger"></span>
@@ -107,24 +107,9 @@
                 <div class="col-1"></div>
                 <div class="col-4 btn btn-primary"><a class="text-light"  href="home.jsp">  Startup </a></div>
             </div>
-          
          </div>
+     </div>   
 
-     </div>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#uname").change(function(){
-		$.ajax({
-			url : 'check_username',
-			data : {username : $("#uname").val()},
-			success : function(data){
-				$("#ures").html(data);
-			}
-		});
-		
-	});
-});
-</script>
 <script type="text/javascript">
 function validate()
 {
@@ -148,8 +133,25 @@ var password = document.getElementById("pass");
 	}
 }
 </script>
-
- 
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#uname").change(function(){
+		$.ajax({
+			url : 'check_username',
+			data : {username : $("#uname").val()},
+			success : function(data){
+				$("#ures").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+ <script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 </body>
 
 </html>
