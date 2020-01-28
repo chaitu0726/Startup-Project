@@ -40,5 +40,17 @@ public class CompanyServiceImpl implements CompanyService {
 		return companyDao.addProject(pro,lg);
 	}
 
+	@Override
+	public List<Funding> fundList() {
+		
+		return companyDao.fundList();
+	}
+
+	@Override
+	public List<String> sname(List<Integer> sname) {
+		
+		return companyDao.sname(sname);
+	}
+
 	
 }

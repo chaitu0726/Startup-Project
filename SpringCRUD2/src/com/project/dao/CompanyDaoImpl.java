@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.project.model.Company;
 import com.project.model.Funding;
@@ -158,6 +162,40 @@ public class CompanyDaoImpl implements CompanyDao{
 					pro1.getFlag()
 			});
 		return true;
+	}
+
+	@Override
+	public List<Funding> fundList() {
+		String sql = "select * from funds where fund_status='Applied'";
+		List<Funding>flist = jt.query(sql,new ResultSetExtractor<List<Funding>>() {
+
+			@Override
+			public List<Funding> extractData(ResultSet rs) throws SQLException, DataAccessException {
+				List<Funding> list = new ArrayList<Funding>();
+				while(rs.next())
+				{
+					Funding fund = new Funding();
+					fund.setFundDescription(rs.getString(6));
+					fund.setFundAmount(rs.getDouble(4));
+					fund.setStartupId(rs.getInt(2));
+					list.add(fund);
+				}
+				return list;
+			}
+			
+		});
+		return flist;
+	}
+
+	@Override
+	public List<String> sname(List<Integer> sname) {
+		List<String>name  = new ArrayList<String>();
+		for (Integer integer : sname) {
+			String sql = "select user_name from user where email =(select email from startup where startup_id = ?)";
+			String s = jt.queryForObject(sql,new Object[] {integer},String.class);
+			name.add(s);
+		}
+		return name;
 	}
 	
 

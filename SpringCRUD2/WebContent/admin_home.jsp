@@ -9,7 +9,13 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="style1.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+ <style>
 <style>
 .body{
    background-image:url('Startup-India-Scheme.jpg');
@@ -101,13 +107,43 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     <form class="Bidding Details" action="gstadd" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
-        <input type="text" name="gstId"   placeholder="Enter GST"/>
+        <input type="text" id="id1" name="gstId"   placeholder="Enter GST"/>
+        <span id="msg1" style="color:red;"></span>
         <input type="text"  name="name"  placeholder="Enter Company Name"/>
-         <input type="text" name="pan"  placeholder="Enter PAN"/>
+         <input type="text" id="id2" name="pan"  placeholder="Enter PAN"/>
+         <span id="msg2" style="color:red;"></span>
         <input type="submit" class ="bg-primary" value="Add Company"/>
     </form>
     </div>
     </div>
     </c:if>
 </body>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id1").change(function(){
+		$.ajax({
+			url : 'check_gst',
+			data : {gst : $("#id1").val()},
+			success : function(data){
+				$("#msg1").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id2").change(function(){
+		$.ajax({
+			url : 'check_pan',
+			data : {pan : $("#id2").val()},
+			success : function(data){
+				$("#msg2").html(data);
+			}
+		});
+		
+	});
+});
+</script>
 </html>

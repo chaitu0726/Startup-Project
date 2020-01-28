@@ -317,4 +317,12 @@ public class StartUpDaoImple implements StartUpDao {
 		return blist;
 	}
 
+	@Override
+	public int getCompanyId(String email) {
+		String sql = "select company_id from company where email =?";
+		Integer id =jt.queryForObject(sql,new Object[] {email},Integer.class);
+		return id.intValue();
+		
+	}
+
 }

@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
 integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <style type="text/css">
 
 body {
@@ -99,62 +100,40 @@ a:hover {
 <div class="container-fluid" >
 
 	<div class="row bg-dark" style="height:50px; padding:10px; font-size:20px;">
-		<div class="col-5"><span class="text-light" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;Menu</span></div>
-		<div class="col-5"><h4 class="text-light">List Of StartUp</h4> </div>
-		<div class="col-1"><a href="#" class="text-light">HOME</a></div>
+	<div class="col-5"></div>
+		<div class="col-5"><h4 class="text-light">Funding List</h4> </div>
+		<div class="col-1"><a href="home_startup" class="text-light">HOME</a></div>
 		 <div class="col-1"><a href="logout" class="text-light"><h4>Logout</h4></a></div>
 	</div>
 	
-	<div class="row">
-		<div class="LeftSideBar"></div>
-	</div>
-	
-	<div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="comp_add_project.jsp">Add project</a>
-  <a href="showFundList">Funds List</a><br>
- <a href="#">Bid Details</a>
 </div>
-
-</div>
-<div class="container mt-5">
-
-<!-- --------------------------------------------------------------------------------- -->
+<div class="container mt-2">
 <table class="table">
   <thead>
     <tr class="table-danger">
      <th scope="col"></th>
-      <th scope="col">Employee</th>
-      <th scope="col">Email</th>
+      <th scope="col">Name</th>
       <th scope="col">Description</th>
+       <th scope="col">Amount</th>
        <th scope="col">Profile</th>
-    </tr>
+  </tr>
   </thead>
   <tbody>
-  <c:forEach items="${lists}" var="temp">
-    <tr class="table-info">
-      <th scope="row"></th>
-      <td>${temp.noOfEmployee}</td>
-      <td>${temp.email}</td>
-       <td>${temp.discription}</td>
-       <td class="bg-light" ><a href="view_profile">View Profile</a></td>
-    </tr>
+  <c:forEach items="${startupList}" var="temp">
+      <tr class="table-info">
+      <th></th>
+      <th scope="row">${temp}</th>
+   </c:forEach>
+   <c:forEach items="${fundlist}" var="copy">
+      <td>${copy.fundDescription}</td>
+      <td>${copy.fundAmount}</td>
+       <td class="bg-light" ><a href="#">View Profile</a></td>
   
-    </c:forEach>
+  
+   </c:forEach>
+   </tr>
   </tbody>
-</table>		
-
-<!-- ------------------------------------------------------------------------------------- -->
-<script>
-function openNav() {
-  document.getElementById("mySidenav").style.width = "250px";
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-</script>
-	
+</table>	
 </div>
 </c:if>
 </body>

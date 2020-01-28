@@ -19,4 +19,5 @@ public interface StartUpDao {
 	public boolean addBid(Bidding bid);
 	public List<Project> startupProjetcList();
 	public List<Bidding> startupBidList();
+	public int getCompanyId(String email);
 }

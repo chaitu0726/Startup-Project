@@ -11,5 +11,6 @@ public interface CompanyDao {
 	public boolean insert(Company comp);
 	public boolean compLogin(Company comp);
 	boolean addProject(Project pro,Login lg);
-	
+	public List<Funding> fundList();
+	public List<String> sname(List<Integer> sname);
 }

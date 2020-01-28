@@ -5,7 +5,8 @@
 <head>
 <meta charset="ISO-8859-1">
 <title></title>
-    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <style>
 .body{
    background-image:url('Startup-India-Scheme.jpg');
@@ -94,7 +95,8 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
         <input type="text" placeholder="Name" name="compName"/>
         <input type="text" placeholder="gst-Id" name="gstId"/>
         <input type="text" placeholder="Phone No" name="contactNo"/>
-        <input type="text" placeholder="Email-Id" name="email"/>
+        <input type="text" id="email" placeholder="Email-Id" name="email"/>
+        <span id="avail4" style="color:red;"></span>
         <input type="text" placeholder="PAN" name="pan"/>
         <input type="text" placeholder="description" name="description"/>
         <input type="password" name ="password" placeholder="Password"/>
@@ -128,5 +130,18 @@ else
 }
 
 </script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#email").change(function(){
+		$.ajax({
+			url : 'check_avail',
+			data : {username : $("#email").val()},
+			success : function(data){
+				$("#avail4").html(data);
+			}
+		});
+		
+	});
+});
+</script>
 </html>

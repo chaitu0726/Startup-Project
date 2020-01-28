@@ -1,6 +1,7 @@
 package com.project.controller;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -34,7 +35,6 @@ public class CompanyController {
 		@RequestMapping(value="/compReg",method = RequestMethod.GET)
 		public String loginGet(HttpSession session)
 		{
-			//System.out.println(session);
 			try {
 			if(session != null)
 				if((int)session.getAttribute("role") == 2)
@@ -51,8 +51,6 @@ public class CompanyController {
 		@RequestMapping(value="/compReg",method=RequestMethod.POST)
 		public String insert(@ModelAttribute("comp")Company comp ,ModelMap model) {
 			
-			
-			//System.out.println("hey");
 			try {
 				if(companyService.insert(comp))
 					return "index";
@@ -68,8 +66,6 @@ public class CompanyController {
 		@RequestMapping(value = "/comProjectAdd", method = RequestMethod.POST)
 		public String addProject(@ModelAttribute("pro") Project pro ,HttpSession session ) {
 			
-			
-			System.out.println("inside the cntr");
 			Login lg= new Login();
 			lg.setUsername(session.getAttribute("uname").toString());
 			
@@ -79,19 +75,21 @@ public class CompanyController {
 			
 			return "project_added_msg";
 		}
-		/*
-		@RequestMapping(value = "/list_stp_comp_cntr", method = RequestMethod.GET)
-		public ModelAndView selectStpFunds( HttpSession session ) {
+		
+		@RequestMapping(value = "/showFundList" ,method = RequestMethod.GET)
+		public ModelAndView showFundList()
+		{
+			ModelAndView model;
+			List<Funding>flist = companyService.fundList();
+			List<Integer>sid = new ArrayList<Integer>();
 			
-			System.out.println("inside the cntr");
-			
-			ModelAndView model = new ModelAndView("list_stp_comp"); 
-			
-			List<Funding> list=companyService.selectStp();
-			
-			model.addObject("lists", list);
-			
+			for (Funding fund : flist) {
+				sid.add(fund.getStartupId());
+			}
+			List<String>sname = companyService.sname(sid);
+			model = new ModelAndView("funding_list");
+			model.addObject("fundlist", flist);
+			model.addObject("startupList", sname);
 			return model;
 		}
-	*/	
 }

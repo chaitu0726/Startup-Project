@@ -111,6 +111,8 @@ public class StartUpController
 			model = new ModelAndView("company_home");
 			model.addObject("lists",list);
 			addUserInSession(lgn, session);
+			int id1 = startUpService.getCompanyId(lgn.getUsername());
+			session.setAttribute("id", id1);
 			return model;
 		}
 		else if(lgn.getFlag() == 0)
@@ -205,29 +207,15 @@ public class StartUpController
 	public ModelAndView applyy(Model model, @RequestParam (value="Id") int id,HttpSession session)
 	{
 		ModelAndView modelView;
-		//try {
+		
 			Project project = startUpService.selectById(id);
-			//if(project !=null)
-			//{
+
 				modelView = new ModelAndView("bidding");
 				modelView.addObject("projectList",project);
 				return modelView;
-			//}
-		//}catch(Exception e)
-		/*{
-			modelView = new ModelAndView("");
-		}
-		return modelView;*/
+		
 	}
-/*	@RequestMapping(value="/apply",method = RequestMethod.GET)
-	public String apply(Model model, @RequestParam (value="Id") int id,HttpSession session)
-	{
-		if(id != Integer.parseInt(session.getAttribute("id").toString()))
-			return "startup_home";
-		else 
-			return "demo";
-	}
-*/
+
 	@RequestMapping(value="/addfunding",method = RequestMethod.POST)
 	public String addFund(@ModelAttribute("fund") Funding fund)
 	{

@@ -6,11 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style1.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         
-        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>   
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>     
 <style>
 
 .body{
@@ -108,6 +112,20 @@
 
      </div>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#uname").change(function(){
+		$.ajax({
+			url : 'check_username',
+			data : {username : $("#uname").val()},
+			success : function(data){
+				$("#ures").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+<script type="text/javascript">
 function validate()
 {
 var username = document.getElementById("uname");
@@ -131,11 +149,6 @@ var password = document.getElementById("pass");
 }
 </script>
 
-<script type="text/javascript">
-$('form').on('submit',function(){
-    alert('submitted');
-});
-</script>
  
 </body>
 

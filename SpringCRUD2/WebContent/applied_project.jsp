@@ -23,9 +23,21 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
 
-<c:forEach  items="${startupProjetcList}" var="temp">
-	${temp.projectName}<br>
-</c:forEach>
+<div class="row">
+<div class="col-2"></div>
+
+	<div class="col-4 mt-1 jumbotron">
+		<c:forEach  items="${startupProjetcList}" var="temp">
+		${temp.projectName}<br>
+		</c:forEach>
+	</div>
+	<div class="col-3 mt-1 jumbotron">
+		<c:forEach items="${startupBidList}" var="copy">
+		${copy.bidAmount}
+		${copy.bidDuration}<br>
+		</c:forEach>
+	</div>
+</div>
 </c:if>
 </body>
 </html>

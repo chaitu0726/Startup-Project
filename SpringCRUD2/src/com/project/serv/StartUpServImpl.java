@@ -105,5 +105,11 @@ public class StartUpServImpl implements StartUpService {
 		return startUpDao.startupBidList();
 	}
 
+	@Override
+	public int getCompanyId(String email) {
+		
+		return startUpDao.getCompanyId(email);
+	}
+
 
 }
