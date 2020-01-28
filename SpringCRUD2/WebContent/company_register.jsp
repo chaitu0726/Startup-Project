@@ -92,14 +92,20 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     <form class="register-form" onsubmit="return validate()" action="compReg" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
-        <input type="text" placeholder="Name" name="compName"/>
-        <input type="text" placeholder="gst-Id" name="gstId"/>
-        <input type="text" placeholder="Phone No" name="contactNo"/>
+        <input type="text" id="id1" placeholder="Name" name="compName"/>
+        <span id="msg1" style="color:red;"></span>
+        <input type="text" id="id2" placeholder="gst-Id" name="gstId"/>
+         <span id="msg2" style="color:red;"></span>
+        <input type="text"  id="id3" placeholder="Phone No" name="contactNo"/>
+         <span id="msg3" style="color:red;"></span>
         <input type="text" id="email" placeholder="Email-Id" name="email"/>
-        <span id="avail4" style="color:red;"></span>
-        <input type="text" placeholder="PAN" name="pan"/>
-        <input type="text" placeholder="description" name="description"/>
-        <input type="password" name ="password" placeholder="Password"/>
+        <span id="avail4" style="color:blue;"></span>
+        <input type="text" id="id5" placeholder="PAN" name="pan"/>
+         <span id="msg5" style="color:red;"></span>
+        <input type="text" id="id6" placeholder="description" name="description"/>
+         <span id="msg6" style="color:red;"></span>
+        <input type="password" id="id7" name ="password" placeholder="Password"/>
+         <span id="msg7" style="color:red;"></span>
         <input type="submit" value="Register"/>
         <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
@@ -108,22 +114,57 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 </body>
 <script>
 function validate()
-	{
-		const user = document.getElementById("uid").value;
-		const name = document.getElementById("name").value;
-		const gst = document.getElementById("gstid").value;
-		const phone = document.getElementById("phone").value;
-		const email = document.getElementById("email").value;
-		const des = document.getElementById("dse").value;
-
-if(user.trim()=="" || name.trim()=="" || gst.trim()==""  || email.trim()=="" || des.trim()=="")
 {
-	alert("Value/s cannot be blank");
+	var id1 = document.getElementById("id1").value.trim();
+	var id2 = document.getElementById("id2").value.trim();
+	var id3 = document.getElementById("id3").value.trim();
+	var id5 = document.getElementById("id5").value.trim();
+	var id6 = document.getElementById("id6").value.trim();
+	var id7 = document.getElementById("id7").value.trim();
+	var email = document.getElementById("email").value.trim();
+
+if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id7=="" || email=="")
+{
+	
+	if(id1 =="")
+	{
+	document.getElementById("msg1").innerHTML="Name cannot Empty";
+	}
+	if(id2 =="")
+	{
+	document.getElementById("msg2").innerHTML="Gst cannot Empty";
+	
+	}
+	if(id3 =="")
+	{
+	document.getElementById("msg3").innerHTML="Contact cannot empty";
+	
+	}
+	
+	if(id5 =="")
+	{
+	document.getElementById("msg5").innerHTML="Please Add PAN details";
+	
+	}
+	if(id6 =="")
+	{
+	document.getElementById("msg6").innerHTML="please Fill Description";
+	
+	}
+	if(id7 =="")
+	{
+	document.getElementById("msg7").innerHTML="must enter password";
+	
+	}
+	if(email=="")
+		{
+		document.getElementById("avail4").innerHTML = "Email Cannot be Blank";
+		}
+
 	return false;
 }
 else
 {
-	alert("hiiii")
 	return true;
 }
 

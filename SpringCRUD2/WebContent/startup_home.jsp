@@ -84,7 +84,7 @@ a:hover {
 	<div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="appliedProject">Applied</a>
-  <a href="selected_project.jsp">Selected</a>
+  <a href="selectedProject">Selected</a>
   <a href="add_funding.jsp">Funding</a>
 </div>
 

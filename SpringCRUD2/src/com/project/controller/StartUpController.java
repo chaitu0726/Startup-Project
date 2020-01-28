@@ -240,4 +240,17 @@ public class StartUpController
 		model.addObject("startupBidList",listBid);
 			return model;
 	}
+	
+	
+	@RequestMapping(value="/selectedProject",method = RequestMethod.GET)
+	public ModelAndView selectList()
+	{
+		ModelAndView model = new ModelAndView("selected_project");
+		 List<String> selectList =  startUpService.selectList();
+		 model.addObject("selectList", selectList);
+		
+		return model;
+		
+	}
+	
 }

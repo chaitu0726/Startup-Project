@@ -6,6 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" href="style.css">
 <style>
 body{
    background-image:url('Startup-India-Scheme.jpg');
@@ -82,6 +83,8 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 	<%-- user is not available --%>
 	<c:redirect url="index.jsp"></c:redirect>
 </c:if>
+<c:if test="${sessionScope.uname !=null && sessionScope.role == 1}">
+
 
 <div class="row bg-dark sticky-top" style="height: 50px">
 <div class="col-1"></div>
@@ -89,8 +92,6 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-5 text-light" style="font-size: 30px">Form For Fund</div>
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
-
-
 <div class="login-page">
     <div class="form">
     <form class="Bidding Details" action="addfunding" method="post">
@@ -104,5 +105,6 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     </form>
     </div>
     </div>
+</c:if>
 </body>
 </html>

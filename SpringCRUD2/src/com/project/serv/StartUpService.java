@@ -21,4 +21,6 @@ public interface StartUpService {
 	public List<Project> startupProjetcList();
 	public List<Bidding> startupBidList();
 	public int getCompanyId(String email);
+	public List<String> selectList();
+	public List<String> selectProjectName();
 }

@@ -111,5 +111,16 @@ public class StartUpServImpl implements StartUpService {
 		return startUpDao.getCompanyId(email);
 	}
 
+	@Override
+	public List<String> selectList() {
+		
+		return startUpDao.selectList();
+	}
+
+	@Override
+	public List<String> selectProjectName() {
+		return startUpDao.selectProjectName();
+	}
+
 
 }

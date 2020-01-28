@@ -325,4 +325,20 @@ public class StartUpDaoImple implements StartUpDao {
 		
 	}
 
+	@Override
+	public List<String> selectList() {
+		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpSession sesion = sra.getRequest().getSession();
+		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		String sql ="select project_name from project where project_id in(select project_id from bidding_details where startup_id = ? and bid_status='select')";
+		List<String> selectProjectList = jt.queryForList(sql, new Object[] {id}, String.class);
+		return selectProjectList;
+	}
+
+	@Override
+	public List<String> selectProjectName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

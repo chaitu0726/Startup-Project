@@ -22,6 +22,15 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="col-5 text-light" style="font-size: 30px">Selected Project</div>
 <div class="col-2"><a href="logout" class="text-light" style="font-size: 25px">Logout</a></div>
 </div>
+
+<div class="row">
+<div class="col-4"></div>
+	<div class="col-4 mt-1 jumbotron" style="height:1px;">
+		<c:forEach  items="${selectList}" var="temp">
+		${temp}<br>
+		</c:forEach>
+	</div>
+</div>
 </c:if>
 </body>
 </html>
