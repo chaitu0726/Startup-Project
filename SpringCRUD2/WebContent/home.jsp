@@ -131,8 +131,7 @@ $(document).ready(function(){
 			success : function(data){
 				$("#avail4").html(data);
 			}
-		});
-		
+		});		
 	});
 });
 </script>
@@ -200,6 +199,11 @@ if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id7==""|| i
 		return true;
 	}
 }
+</script>
+<script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
 </script>
 </html>
 

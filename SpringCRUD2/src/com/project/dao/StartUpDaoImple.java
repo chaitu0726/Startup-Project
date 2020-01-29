@@ -142,7 +142,7 @@ public class StartUpDaoImple implements StartUpDao {
 	public List<Project> selectAll() {
 		List<Project> list = new ArrayList<Project>();
 		
-		String sql= "select * from project";
+		String sql= "select * from project where project_id not in (select project_id from bidding_details where bid_status not in ('applied','rejected'))";
 		list = jt.query(sql, new ResultSetExtractor<List<Project>>(){
 
 			@Override
@@ -272,6 +272,9 @@ public class StartUpDaoImple implements StartUpDao {
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpSession sesion = sra.getRequest().getSession();
 		int id = Integer.parseInt(sesion.getAttribute("id").toString());
+		
+		//String sqll = "select count(bid_status) from bidding_details where bid_status='selected' and project_id = ?";
+		
 		String sql="select * from project  where project_id  in (select project_id from bidding_details where startup_id =? and bid_status ='applied')";
 		
 		List<Project> plist = jt.query(sql,new Object[] {id}, new ResultSetExtractor<List<Project>>(){

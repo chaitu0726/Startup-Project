@@ -104,12 +104,13 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 
 <div class="login-page">
     <div class="form">
-    <form class="Bidding Details" action="gstadd" method="post">
+    <form class="Bidding Details" onsubmit="return validate()" action="gstadd" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
         <input type="text" id="id1" name="gstId"   placeholder="Enter GST"/>
         <span id="msg1" style="color:red;"></span>
-        <input type="text"  name="name"  placeholder="Enter Company Name"/>
+        <input type="text" id="id3" name="name"  placeholder="Enter Company Name"/>
+        <span id="msg3" style="color:red;"></span>
          <input type="text" id="id2" name="pan"  placeholder="Enter PAN"/>
          <span id="msg2" style="color:red;"></span>
         <input type="submit" class ="bg-primary" value="Add Company"/>
@@ -145,5 +146,37 @@ $(document).ready(function(){
 		
 	});
 });
+</script>
+<script type="text/javascript">
+function validate()
+{
+	var gstid=document.getElementById("id1").value.trim();
+	var name=document.getElementById("id3").value.trim();
+	var pan=document.getElementById("id2").value.trim();
+
+	if(gstid=="" || pan=="" || name=="")
+		{
+			if(gstid=="")
+				{
+					document.getElementById("msg1").innerHTML=" GstId cannot Empty";
+				}
+			if(pan=="")
+				{
+				document.getElementById("msg2").innerHTML=" Pan Id cannot Empty";
+				}
+			if(name=="")
+				{
+				document.getElementById("msg3").innerHTML="Company Name cannot be Empty";
+				}
+			return false;
+		}
+	else{
+	return true;}
+}
+</script>
+<script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
 </script>
 </html>

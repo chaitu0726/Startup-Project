@@ -92,7 +92,7 @@
             <div class="col-6" style="font-size:20px;">Login Form</div> 
             <div class="col-3"><br></div> 
            
-             <form  class="Login-form"   action="login" method="post">
+             <form  class="Login-form"  onsubmit="return validate()" action="login" method="post">
            
                  <input type="text"  id ="uname" name ="username"  placeholder="Username"/>
                  <span id="ures" class="text-danger"></span>
@@ -153,5 +153,4 @@ $(document).ready(function(){
     window.onunload=function(){null};
 </script>
 </body>
-
 </html>

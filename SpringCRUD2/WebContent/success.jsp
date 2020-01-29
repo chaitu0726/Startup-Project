@@ -10,4 +10,9 @@
 <h3>Details Added Successfully....</h3><br><br>
 <a href="home_startup">Home</a>
 </body>
+<script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 </html>

@@ -109,11 +109,13 @@ Amount       : ${projectList.projectBidAmount}<br>
 </div>
 <div class="col-4">
     <div class="form">
-    <form action="applyBid" method="post">
+    <form action="applyBid" onsubmit="return validate()" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
-        <input type="text" name="bidAmount" placeholder="Bid Amount"/>
-        <input type="text" name="bidDuration" placeholder="Bid-Duration"/>
+        <input type="text" id="bid" name="bidAmount" placeholder="Bid Amount"/>
+        <span id="msg1" style="color:red;"></span>
+        <input type="text" id="bidd" name="bidDuration" placeholder="Bid-Duration"/>
+        <span id="msg2" style="color:red;"></span>
         <input type="hidden" name="projectId"  value="${projectList.projetcId}"/>
         <input type="hidden" name="companyId" value="${projectList.comapanyId}"/>
         <input type="submit" class ="bg-primary" value="Apply Bid"/>
@@ -123,4 +125,31 @@ Amount       : ${projectList.projectBidAmount}<br>
     </div>
     </c:if>
 </body>
+<script type="text/javascript">
+function validate()
+{
+const bid= document.getElementById("bid").value.trim();
+const bidd=document.getElementById("bidd").value.trim();
+
+if(bid=="" || bidd=="")
+{
+	if(bid="")
+		{
+			document.getElementById("msg1").innerHTML="Bid Amount cannot Empty";
+		}
+	if(bidd="")
+	{
+		document.getElementById("msg2").innerHTML="Bid Duration Cannot Empty";
+	}
+		return false;
+}
+else
+	return true;
+}
+</script>
+<script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 </html>

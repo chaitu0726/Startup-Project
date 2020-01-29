@@ -94,17 +94,50 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 </div>
 <div class="login-page">
     <div class="form">
-    <form class="Bidding Details" action="addfunding" method="post">
+    <form class="Bidding Details" onsubmit="return validate()" action="addfunding" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
-        <input type="text" name="fundAmount" placeholder="Fund Amount"/>
+        <input type="text" id="id1" name="fundAmount" placeholder="Fund Amount"/>
+        <span id="msg1"></span><br>
         Add Description
-        <textarea rows="5" cols="35" name="fundDescription"></textarea>  
+        <textarea rows="5" id="id2" cols="35" name="fundDescription"></textarea>
+        <span id="msg2"></span><br>  
         <input type="submit" class="bg-primary" value="Apply For Funding"/>
-   
+   		
     </form>
     </div>
     </div>
 </c:if>
 </body>
+<script type="text/javascript">
+function validate()
+{
+
+	var id1 = document.getElementById("id1").value.trim();
+	var id2 = document.getElementById("id2").value.trim();
+	
+	if(id1=="" || id2=="")
+		{
+			if(id1=="")
+				{
+				document.getElementById("msg1").innerHTML="Fund Amount Cannot be Empty";
+				}
+			if(id2=="")
+			{
+			document.getElementById("msg2").innerHTML="Must fill Discription";
+			}
+			
+			return false;
+		}
+	else 
+		{
+		return true;
+		}
+}
+</script>
+<script type = "text/javascript">
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
 </html>

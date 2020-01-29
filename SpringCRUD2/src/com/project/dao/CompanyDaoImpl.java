@@ -272,11 +272,24 @@ List<Funding> list = new ArrayList<Funding>();
 	public void selectProject(int projetcId) {
 
 		//////////////////////////////////
-		///update bidding_details set bid_status = 'rejected' where project_id = ?  and company_id = ? and bid_status = 'applied'
+		String Sqql ="select project_id,company_id from bidding_details where bid_id =?";
+		Bidding bid = jt.queryForObject(Sqql, new Object[] {projetcId}, new RowMapper<Bidding>() {
+
+			@Override
+			public Bidding mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Bidding bid = new Bidding();
+				bid.setProjectId(rs.getInt(2));
+				bid.setCompanyId(rs.getInt(3));
+				return bid;
+			}});
 		//////////////////////////////
+		
 		String sql="update bidding_details set bid_status='selected' where bid_id=?";
 		jt.update(sql,new Object[] {projetcId});
 		
+		
+		String Sql = "update bidding_details set bid_status = 'rejected' where project_id = ?  and company_id = ? and bid_status = 'applied'";
+		jt.update(Sql, new Object[] {bid.getProjectId(),bid.getCompanyId()});
 	}
 
 	@Override
@@ -284,7 +297,6 @@ List<Funding> list = new ArrayList<Funding>();
 		ServletRequestAttributes sra = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		HttpSession sesion = sra.getRequest().getSession();
 		int id = Integer.parseInt(sesion.getAttribute("id").toString());
-		 
 		List<String>projectname  = new ArrayList<String>();
 		
 		for (Integer integer : pid) {
