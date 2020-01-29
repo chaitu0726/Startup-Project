@@ -53,4 +53,27 @@ public class AjaxController {
 		return "";
 		
 	}
+	
+	@RequestMapping(value="/check_gstt",method = RequestMethod.GET)
+	@ResponseBody
+	public String checkAvailabilityGstt(@RequestParam String gst)
+	{
+		if(ajaxService.isGstExist(gst))
+			return "";
+		else if(gst == "")
+			return "Gst Number Cannot blank";
+		return "Invalid GST";
+	}
+	
+	@RequestMapping(value="/check_pann",method = RequestMethod.GET)
+	@ResponseBody
+	public String checkAvailabilityPann(@RequestParam String pan)
+	{
+		if(ajaxService.isPanExist(pan))
+			return "";
+		else if(pan == "")
+			return "PAN Number Cannot blank";
+		return "Invalid PAN";
+		
+	}
 }

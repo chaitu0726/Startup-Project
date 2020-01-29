@@ -137,6 +137,10 @@ if(bid=="" || bidd=="")
 		{
 			document.getElementById("msg1").innerHTML="Bid Amount cannot Empty";
 		}
+	if(Number(bid)<=5000)
+		{
+		document.getElementById("msg1").innerHTML="Bid Amount must be greater than 5000";
+		}
 	if(bidd="")
 	{
 		document.getElementById("msg2").innerHTML="Bid Duration Cannot Empty";

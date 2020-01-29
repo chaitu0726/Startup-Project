@@ -265,8 +265,8 @@ List<Funding> list = new ArrayList<Funding>();
 			@Override
 			public Bidding mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Bidding bid = new Bidding();
-				bid.setProjectId(rs.getInt(2));
-				bid.setCompanyId(rs.getInt(3));
+				bid.setProjectId(rs.getInt(1));
+				bid.setCompanyId(rs.getInt(2));
 				return bid;
 			}});
 		//////////////////////////////

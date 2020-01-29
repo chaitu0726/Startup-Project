@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,6 +86,7 @@ body{
 
 </head>
 <body>
+
  <div class="row bg-dark sticky-top" style="height: 50px">
 <div class="col-5"></div>
 <div class="col-4 text-light" style="font-size: 30px">Registration for Startup </div>
@@ -196,6 +198,34 @@ if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id8=="" ||u
    function preventBack(){window.history.forward();}
     setTimeout("preventBack()", 0);
     window.onunload=function(){null};
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#gstid").change(function(){
+		$.ajax({
+			url : 'check_gstt',
+			data : {gst : $("#gstid").val()},
+			success : function(data){
+				$("#avail2").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#pan").change(function(){
+		$.ajax({
+			url : 'check_pann',
+			data : {pan: $("#pan").val()},
+			success : function(data){
+				$("#avail7").html(data);
+			}
+		});
+		
+	});
+});
 </script>
 </html>
 

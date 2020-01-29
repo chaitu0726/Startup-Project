@@ -108,12 +108,19 @@ public class StartUpController
 		}
 		else if(lgn.getFlag() == 2)
 		{
+			
 			List<StartUp> list = startUpService.selectStp();
+			
 			model = new ModelAndView("company_home");
+			
 			model.addObject("lists",list);
+			
 			addUserInSession(lgn, session);
+			
 			int id1 = startUpService.getCompanyId(lgn.getUsername());
+			
 			session.setAttribute("id", id1);
+			
 			return model;
 		}
 		else if(lgn.getFlag() == 0)

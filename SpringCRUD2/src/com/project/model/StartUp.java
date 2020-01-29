@@ -7,7 +7,6 @@ public class StartUp {
 	private String contactNo;
 	private String email;
 	private String password;
-	private String date;
 	private String discription;
 	private int noOfEmployee;
 	private String pan;
@@ -28,7 +27,7 @@ public class StartUp {
 
 
 	
-	public StartUp(String name, String gstId, String contactNo, String email, String password, String date,
+	public StartUp(String name, String gstId, String contactNo, String email, String password,
 			String discription, int noOfEmployee, String pan, int startUpId) {
 		super();
 		this.name = name;
@@ -36,7 +35,6 @@ public class StartUp {
 		this.contactNo = contactNo;
 		this.email = email;
 		this.password = password;
-		this.date = date;
 		this.discription = discription;
 		this.noOfEmployee = noOfEmployee;
 		this.pan = pan;
@@ -51,13 +49,7 @@ public class StartUp {
 		this.startUpId = startUpId;
 	}
 
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
+	
 
 	public String getDiscription() {
 		return discription;

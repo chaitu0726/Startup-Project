@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,7 +93,11 @@ body{
 </style>
 </head>
 <body>
-
+<c:if test="${sessionScope.uname == null}">
+	<%-- user is not available --%>
+	<c:redirect url="index.jsp"></c:redirect>
+</c:if>
+<c:if test="${sessionScope.uname !=null && sessionScope.role == 2}">
 <div class="">
 
 <div class="row bg-dark sticky-top " >
@@ -126,6 +131,7 @@ body{
     </div>
     </div>
     </div>
+    </c:if>
 </body>
 
 <script type="text/javascript">

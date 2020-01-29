@@ -103,14 +103,14 @@ a:hover {
 	<div class="row bg-dark" style="height:50px; padding:10px; font-size:20px;">
 	<div class="col-5"></div>
 		<div class="col-5"><h4 class="text-light">Meeting</h4> </div>
-		<div class="col-1"><a href="home_startup.htm" class="text-light">HOME</a></div>
-		 <div class="col-1"><a href="logout.htm" class="text-light"><h4>Logout</h4></a></div>
+		<div class="col-1"><a href="home_startup" class="text-light">HOME</a></div>
+		 <div class="col-1"><a href="logout" class="text-light"><h4>Logout</h4></a></div>
 	</div>
 	
 </div>
 <div class="container">
 	
-	<div class="col-12 " style="font-size: 80px;">Meeting is Fixed !!!! Enjoy</div>
+	<div class="col-12 " style="font-size: 80px;">Meeting is Fixed</div>
 	
 </div>
 </c:if>

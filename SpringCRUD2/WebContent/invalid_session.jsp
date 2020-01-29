@@ -7,9 +7,16 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+ <style type="text/css">
+ body{
+ background-image:url('Error.png');
+ 
+ }
+ </style>
 </head>
 <body align="center" class="jumbotron">
-<h1>Page Not Found....</h1>
+<h1>Site is  under Maintainance</h1>
 <form action="home_startup" method="get">
 <div><input type="submit" value="HOME"></div>
 </form>

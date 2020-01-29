@@ -22,13 +22,13 @@ public class AdminDaoImpl implements AdminDao {
 	public boolean insertGst(Gst gst) {
 		
 		String sql= "insert into gst values(?,?,?)";
-		System.out.println("Before");
+		
 		jt.update(sql,new Object [] {
 				gst.getGstId(),
 				gst.getName(),
 				gst.getPan()
 		});
-		System.out.println("After");
+		
 		return true;
 	}
 

@@ -36,15 +36,7 @@ public class StartUpDaoImple implements StartUpDao {
 	@Override
 	public boolean add(StartUp startup) {
 	
-			//for date
-			/*String date = "'";
-			date += startup.getDate();
-			date += "'";*/
-			//
 			
-			//for gstId
-			//String gstId = startup.getGstId();
-			//
 	
 			String sql = "select * from gst where gst_id = ? and pan =?";
 			Gst st = jt.queryForObject(sql,new Object [] {startup.getGstId(),startup.getPan()},new RowMapper<Gst>(){
@@ -109,7 +101,7 @@ public class StartUpDaoImple implements StartUpDao {
 				@Override
 				public StartUp mapRow(ResultSet rs, int rowNum) throws SQLException {
 					StartUp temp = new StartUp();
-					temp.setStartUpId(rs.getInt(5));
+					temp.setStartUpId(rs.getInt(4));
 					return temp;
 				}
 			});
@@ -170,22 +162,22 @@ public class StartUpDaoImple implements StartUpDao {
 	public List<StartUp> selectStp() {
 		
 		List<StartUp> list = new ArrayList<StartUp>();
-		System.out.println("inside select stp");
+		
 		String sql= "select * from startup";
 		list = jt.query(sql, new ResultSetExtractor<List<StartUp>>(){
 
 			@Override
 			public List<StartUp> extractData(ResultSet rs) throws SQLException, DataAccessException {
 				List<StartUp> li = new ArrayList<StartUp>();
-				
+				System.out.println("company login");
 				while(rs.next())
 				{
 					StartUp st = new StartUp();
 					
-					st.setStartUpId(rs.getInt(5));
-					st.setNoOfEmployee(rs.getInt(3));
-					st.setEmail(rs.getString(4));
-					st.setDiscription(rs.getString(2));
+					st.setStartUpId(rs.getInt(4));
+					st.setNoOfEmployee(rs.getInt(2));
+					st.setEmail(rs.getString(3));
+					st.setDiscription(rs.getString(1));
 					
 					li.add(st);
 				}
@@ -193,7 +185,7 @@ public class StartUpDaoImple implements StartUpDao {
 			}
 	
 		});
-		System.out.println("selected stp");
+		
 		return list;
 			
 	}
@@ -329,6 +321,7 @@ public class StartUpDaoImple implements StartUpDao {
 	public int getCompanyId(String email) {
 		String sql = "select company_id from company where email =?";
 		Integer id =jt.queryForObject(sql,new Object[] {email},Integer.class);
+		System.out.println(id.intValue());
 		return id.intValue();
 		
 	}

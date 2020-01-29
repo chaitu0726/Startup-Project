@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+   <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,6 +112,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     </form>
     </div>
     </div>
+   	
 </body>
 <script>
 function validate()
@@ -179,6 +181,34 @@ $(document).ready(function(){
 			data : {username : $("#email").val()},
 			success : function(data){
 				$("#avail4").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id2").change(function(){
+		$.ajax({
+			url : 'check_gstt',
+			data : {gst : $("#id2").val()},
+			success : function(data){
+				$("#msg2").html(data);
+			}
+		});
+		
+	});
+});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#id5").change(function(){
+		$.ajax({
+			url : 'check_pann',
+			data : {pan : $("#id5").val()},
+			success : function(data){
+				$("#msg5").html(data);
 			}
 		});
 		
