@@ -39,6 +39,10 @@ public class StartUpServImpl implements StartUpService {
 
 	@Override
 	public boolean add(StartUp startup) {
+		if(startup.getName().equals(null) || startup.getGstId().equals(null) || startup.getContactNo().equals(null) 
+			|| startup.getEmail().equals(null) || startup.getNoOfEmployee()==0 || startup.getDiscription().equals(null)
+			|| startup.getPan().equals(null) || startup.getPassword().equals(null))
+			return false;
 		
 		return startUpDao.add(startup);
 	}

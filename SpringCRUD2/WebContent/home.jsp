@@ -112,8 +112,6 @@ body{
         	<span id="avail6" style="color:red"></span>
 		<input type="text" id="pan" name="pan" placeholder="Enter PAN"/>
 			<span id="avail7" style="color:red"></span>
-		<input type="text" id="date" name ="date" placeholder="Registarion Date in YYYY-MM-DD"/>
-			<span id="avail8" style="color:red"></span>
 		<input type="password" id="pass" name="password" placeholder="Enter Password"/>
         	<span id="avail9" style="color:red"></span>
         <input type="submit"/>
@@ -145,10 +143,9 @@ var id3 = document.getElementById("contact").value.trim();
 var id4 = document.getElementById("desc").value.trim();
 var id5 = document.getElementById("noe").value.trim();
 var id6 = document.getElementById("pan").value.trim();
-var id7 = document.getElementById("date").value.trim();
 var id8 = document.getElementById("pass").value.trim();
 
-if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id7==""|| id8=="" ||username==""){
+if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id8=="" ||username==""){
 	if(username =="")
 		{
 		document.getElementById("avail4").innerHTML="email cannot blank";
@@ -181,11 +178,6 @@ if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id7==""|| i
 	if(id6 =="")
 	{
 	document.getElementById("avail7").innerHTML="pan cannot blank";
-	
-	}
-	if(id7 =="")
-	{
-	document.getElementById("avail8").innerHTML="date cannot blank";
 	
 	}
 	if(id8 =="")

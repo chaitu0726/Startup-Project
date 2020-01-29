@@ -26,6 +26,11 @@ public class CompanyServiceImpl implements CompanyService {
 
 	@Override
 	public boolean insert(Company comp) {
+		if(comp.getCompName().equals(null) || comp.getGstId().equals(null) || comp.getGstId().equals(null)
+				|| comp.getContactNo().equals(null) || comp.getEmail().equals(null) ||
+			comp.getPan().equals(null) || comp.getDescription().equals(null) || comp.getPassword().equals(null))
+			return false;
+		
 		return companyDao.insert(comp);
 	}
 
