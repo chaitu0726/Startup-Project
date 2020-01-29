@@ -37,8 +37,8 @@ public class CompanyDaoImpl implements CompanyDao{
 
 	@Override
 	public boolean insert(Company comp) {
-		return false;
-		/*String sql;
+		
+		String sql;
 		String flag ="yes";
 		
 		sql="select * from gst where gst_id=? and pan=?";
@@ -65,7 +65,6 @@ public class CompanyDaoImpl implements CompanyDao{
 				2
 		});
 		
-		System.out.println(a+"inserted into login");
 		
 		sql= "insert into user values(?,?,?,?,?,?)";
 		
@@ -79,10 +78,6 @@ public class CompanyDaoImpl implements CompanyDao{
 				flag
 		});
 		
-		System.out.println(a+"inserted into user");
-		
-		
-		
 		sql="insert into company(description,email,flag) values(?,?,?)";
 		
 		a=jt.update(sql, new Object [] {
@@ -91,10 +86,6 @@ public class CompanyDaoImpl implements CompanyDao{
 				comp.getEmail(),
 				flag
 		});
-		
-		System.out.println(a+"inserted into company");
-		
-		
 		
 		sql="select * from Company where email=?";
 		Company comp1 = jt.queryForObject(sql,new Object[] {comp.getEmail()}, new RowMapper<Company>(){
@@ -107,9 +98,7 @@ public class CompanyDaoImpl implements CompanyDao{
 			}
 		});
 		
-		//if(comp1 == null);
-			//return false;
-		System.out.println("selected comp id from table");
+		
 		
 		int cid=comp1.getCompanyId();
 		
@@ -121,9 +110,7 @@ public class CompanyDaoImpl implements CompanyDao{
 				flag
 		});
 		
-		System.out.println("inserted into gst_company");
-		
-		return true;*/
+		return true;
 	
 	}
 
