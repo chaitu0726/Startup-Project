@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.project.serv.AjaxService;
 @Controller
 public class AjaxController {
-//hjvvhvhv
+
 	@Autowired
 	AjaxService ajaxService;
 	

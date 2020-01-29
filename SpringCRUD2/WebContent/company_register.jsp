@@ -90,7 +90,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 <div class="login-page">
     <div class="form">
     
-    <form class="register-form" onsubmit="return validate()" action="compReg" method="post">
+    <form name="form1" class="register-form" onsubmit="return validate()" action="compReg" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
         <input type="text" id="id1" placeholder="Name" name="compName"/>
@@ -107,7 +107,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
          <span id="msg6" style="color:red;"></span>
         <input type="password" id="id7" name ="password" placeholder="Password"/>
          <span id="msg7" style="color:red;"></span>
-        <input type="submit" value="Register"/>
+        <input type="submit" value="Register"onclick=" return ValidateEmail(document.form1.email)" />
         <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
     </div>
@@ -219,5 +219,22 @@ $(document).ready(function(){
    function preventBack(){window.history.forward();}
     setTimeout("preventBack()", 0);
     window.onunload=function(){null};
+</script>
+<script type="text/javascript">
+function ValidateEmail(inputText)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(inputText.value.match(mailformat))
+{
+document.form1.text1.focus();
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+document.form1.text1.focus();
+return false;
+}
+}
 </script>
 </html>

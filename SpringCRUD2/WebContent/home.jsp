@@ -97,7 +97,7 @@ body{
     
 
     
-    <form class="register-form" onsubmit="return validate()" action="add" method="post">
+    <form name="form1" class="register-form" onsubmit="return validate()" action="add" method="post">
  
         
         <input type="text" id="name" name="name" placeholder="Company Name"/>
@@ -106,7 +106,7 @@ body{
         	<span id="avail2" style="color:red"></span>
         <input type="text" id="contact" name="contactNo" placeholder="Phone No"/>
         	<span id="avail3" style="color:red"></span>
-        <input type="text" id="email" name="email" placeholder="Email-Id"/>
+        <input type="text" id="email"  name="email" placeholder="Email-Id"/>
         <span id="avail4" style="color:green"></span>
         <input type="text" id="desc" name="discription" placeholder="Description"/>
         	<span id="avail5" style="color:red"></span>
@@ -116,7 +116,7 @@ body{
 			<span id="avail7" style="color:red"></span>
 		<input type="password" id="pass" name="password" placeholder="Enter Password"/>
         	<span id="avail9" style="color:red"></span>
-        <input type="submit"/>
+        <input type="submit" onclick=" return ValidateEmail(document.form1.email)" />
         <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
     </div>
@@ -226,6 +226,23 @@ $(document).ready(function(){
 		
 	});
 });
+</script>
+<script type="text/javascript">
+function ValidateEmail(inputText)
+{
+var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+if(inputText.value.match(mailformat))
+{
+document.form1.text1.focus();
+return true;
+}
+else
+{
+alert("You have entered an invalid email address!");
+document.form1.text1.focus();
+return false;
+}
+}
 </script>
 </html>
 
