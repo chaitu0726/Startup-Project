@@ -87,7 +87,10 @@ a:hover {
    					<th scope="col"></th>
       				<td>${copy.fundDescription}</td>
       				<td>${copy.fundAmount}</td>
-       				<td class="bg-light" ><a href="fixed_meeting.jsp">Fix Meeting</a></td>
+       				<td class="bg-light" >
+       				<form style="height: 20px;" action="fundSelected" method="post">
+       				<input type="hidden" value="${copy.fundId}" name="fundId">
+       				<input type="submit" class="bg-dark text-light" value="Select"></form></td>
  					<tr>
  	 			 </c:forEach>
    			</tbody>   		

@@ -9,7 +9,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <style>
-.body{
+body{
    background-image:url('Startup-India-Scheme.jpg');
   background-repeat:no-repeat;
   background-attachment:fixed;
@@ -191,7 +191,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#id2").change(function(){
 		$.ajax({
-			url : 'check_gstt',
+			url : 'check_gstC',
 			data : {gst : $("#id2").val()},
 			success : function(data){
 				$("#msg2").html(data);
@@ -205,7 +205,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#id5").change(function(){
 		$.ajax({
-			url : 'check_pann',
+			url : 'check_panC',
 			data : {pan : $("#id5").val()},
 			success : function(data){
 				$("#msg5").html(data);

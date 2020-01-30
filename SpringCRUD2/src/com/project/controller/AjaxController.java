@@ -38,6 +38,7 @@ public class AjaxController {
 			return "Gst is Already Registered";
 		else if(gst == "")
 			return "Gst Number Cannot blank";
+		else
 		return "";
 	}
 	
@@ -50,29 +51,58 @@ public class AjaxController {
 			return "PAN Is already registered";
 		else if(pan == "")
 			return "PAN Number Cannot blank";
+		else
 		return "";
 		
 	}
 	
-	@RequestMapping(value="/check_gstt",method = RequestMethod.GET)
+	@RequestMapping(value="/check_gstS",method = RequestMethod.GET)
 	@ResponseBody
-	public String checkAvailabilityGstt(@RequestParam String gst)
+	public String checkAvailabilityGstStartup(@RequestParam String gst)
 	{
-		if(ajaxService.isGstExist(gst))
-			return "";
+		if(ajaxService.isGstExistStartup(gst))
+			return "Invalid Gst";
 		else if(gst == "")
 			return "Gst Number Cannot blank";
-		return "Invalid GST";
+		else
+		return "";
 	}
 	
-	@RequestMapping(value="/check_pann",method = RequestMethod.GET)
+	
+	@RequestMapping(value="/check_panS",method = RequestMethod.GET)
 	@ResponseBody
-	public String checkAvailabilityPann(@RequestParam String pan)
+	public String checkAvailabilityPanStartup(@RequestParam String pan)
 	{
 		if(ajaxService.isPanExist(pan))
 			return "";
 		else if(pan == "")
 			return "PAN Number Cannot blank";
+		else
+		return "PAN is Invalid";
+		
+	}
+	
+	@RequestMapping(value="/check_gstC",method = RequestMethod.GET)
+	@ResponseBody
+	public String checkAvailabilityGstComapny(@RequestParam String gst)
+	{
+		if(ajaxService.isGstExistCompany(gst))
+			return "Invalid GST";
+		else if(gst == "")
+			return "Gst Number Cannot blank";
+		else
+		return "";
+	}
+	
+	@RequestMapping(value="/check_panC",method = RequestMethod.GET)
+	@ResponseBody
+	public String checkAvailabilityPanCompany(@RequestParam String pan)
+	{
+		if(ajaxService.isPanExist(pan))
+			return "";
+		else if(pan == "")
+			return "PAN Number Cannot blank";
+		else
 		return "Invalid PAN";
 		
 	}

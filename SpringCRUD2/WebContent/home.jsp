@@ -203,7 +203,7 @@ if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id8=="" ||u
 $(document).ready(function(){
 	$("#gstid").change(function(){
 		$.ajax({
-			url : 'check_gstt',
+			url : 'check_gstS',
 			data : {gst : $("#gstid").val()},
 			success : function(data){
 				$("#avail2").html(data);
@@ -217,7 +217,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#pan").change(function(){
 		$.ajax({
-			url : 'check_pann',
+			url : 'check_panS',
 			data : {pan: $("#pan").val()},
 			success : function(data){
 				$("#avail7").html(data);

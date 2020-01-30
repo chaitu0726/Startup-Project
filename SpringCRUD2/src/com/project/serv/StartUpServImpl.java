@@ -44,7 +44,25 @@ public class StartUpServImpl implements StartUpService {
 			|| startup.getPan().equals(null) || startup.getPassword().equals(null))
 			return false;
 		
-		return startUpDao.add(startup);
+		System.out.println("add");
+		String sqll ="select count(gst_id) from gst where pan = ?";
+		Integer check = jt.queryForObject(sqll, new Object[] {startup.getPan()}, Integer.class);
+		System.out.println(check);
+		if(check != 1)
+			return false;
+		
+		String sql ="select count(gst_id) from gst where gst_id=?";
+		Integer count1 = jt.queryForObject(sql,new Object[] {startup.getGstId()}, Integer.class);
+		sql ="select count(gst_id) from gst_company where gst_id=?";
+		Integer count2 = jt.queryForObject(sql,new Object[] {startup.getGstId()}, Integer.class);
+		sql ="select count(gst_id) from gst_startup where gst_id=?";
+		Integer count3 = jt.queryForObject(sql,new Object[] {startup.getGstId()}, Integer.class);
+		
+		System.out.println(count1+" "+count2+" "+count3);
+		if(count1 == 1 && count2 == 0 && count3 ==0)
+			return startUpDao.add(startup);
+		else
+			return false;
 	}
 
 	@Override

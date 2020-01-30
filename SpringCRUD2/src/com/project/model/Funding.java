@@ -1,6 +1,7 @@
 package com.project.model;
 public class Funding {
 
+	private int fundId;
 	private int startupId;
 	private int companyId;
 	private double fundAmount;
@@ -12,9 +13,11 @@ public class Funding {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Funding(int startupId, int companyId, double fundAmount, String fundStatus, String fundDescription,
-			String flag) {
+	
+	public Funding(int fundId, int startupId, int companyId, double fundAmount, String fundStatus,
+			String fundDescription, String flag) {
 		super();
+		this.fundId = fundId;
 		this.startupId = startupId;
 		this.companyId = companyId;
 		this.fundAmount = fundAmount;
@@ -22,6 +25,15 @@ public class Funding {
 		this.fundDescription = fundDescription;
 		this.flag = flag;
 	}
+
+	public int getFundId() {
+		return fundId;
+	}
+
+	public void setFundId(int fundId) {
+		this.fundId = fundId;
+	}
+
 	public int getStartupId() {
 		return startupId;
 	}

@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter
 import com.project.model.Bidding;
 import com.project.model.Company;
 import com.project.model.Funding;
+import com.project.model.Gst;
 import com.project.model.Login;
 import com.project.model.Project;
 import com.project.dao.CompanyDao;
@@ -43,17 +44,17 @@ public class CompanyDaoImpl implements CompanyDao{
 		
 		sql="select * from gst where gst_id=? and pan=?";
 		
-		Company comp2 = jt.queryForObject(sql, new Object[] {comp.getGstId(),comp.getPan()}, new RowMapper<Company>(){
+		Gst comp2 = jt.queryForObject(sql, new Object[] {comp.getGstId(),comp.getPan()}, new RowMapper<Gst>(){
 
 			@Override
-			public Company mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Company temp=new Company();
+			public Gst mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Gst temp=new Gst();
 				temp.setGstId(rs.getString(1));
 				temp.setPan(rs.getString(3));
 				return temp;
 			}});
 		
-		//if(comp2.getGstId()==comp.getPan() && comp.getGstId()==comp.getPan()) {
+		
 				
 		
 		 sql= "insert into login values(?,?,?)";
@@ -87,7 +88,7 @@ public class CompanyDaoImpl implements CompanyDao{
 				flag
 		});
 		
-		sql="select * from Company where email=?";
+		sql="select * from company where email=?";
 		Company comp1 = jt.queryForObject(sql,new Object[] {comp.getEmail()}, new RowMapper<Company>(){
 
 			@Override
@@ -192,7 +193,7 @@ public class CompanyDaoImpl implements CompanyDao{
 	public List<Funding> selectStp() {
 List<Funding> list = new ArrayList<Funding>();
 		
-		String sql="select *from funds";
+		String sql="select *from funds where fund_status = 'Applied'";
 		list = jt.query(sql, new ResultSetExtractor<List<Funding>>(){
 
 			@Override
@@ -202,6 +203,7 @@ List<Funding> list = new ArrayList<Funding>();
 				while(rs.next())
 				{
 					Funding st = new Funding();
+					st.setFundId(rs.getInt(1));
 					st.setStartupId(rs.getInt(2));
 					st.setFundAmount(rs.getDouble(4));
 					st.setFundStatus(rs.getString(5));

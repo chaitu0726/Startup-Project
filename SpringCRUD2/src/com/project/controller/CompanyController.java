@@ -38,8 +38,10 @@ public class CompanyController {
 		{
 			try {
 			if(session != null)
-				if((int)session.getAttribute("role") == 2)
+				if((int)session.getAttribute("role") == 1)
 					return "startup_home";
+				else if((int)session.getAttribute("role") ==0)
+					return "admin_home";
 				else
 					return "company_home";
 			return "index";
@@ -151,6 +153,13 @@ public class CompanyController {
 			companyService.selectProject(pid.getProjetcId());
 			
 			return "selectedProject";
+		}
+		
+		@RequestMapping(value = "/fundSelected")
+		public String  selectedFunds(@ModelAttribute("pid") Funding fund) {
+			
+			companyService.selectFund(fund.getFundId());
+			return "fixed_meeting";
 		}
 		
 }

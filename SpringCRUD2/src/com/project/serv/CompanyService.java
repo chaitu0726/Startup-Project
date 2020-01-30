@@ -18,6 +18,7 @@ public interface CompanyService {
 	public List<Bidding> selectStpBid();
 	public void selectProject(int projetcId);
 	public List<String> pname(List<Integer> pid);
+	public void selectFund(int fundId);
 	
 	 
 }

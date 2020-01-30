@@ -44,5 +44,26 @@ public class AjaxServiceImpl implements AjaxService{
 		else
 			return false;
 	}
-//sdbdvjdvjndvndnkjvnv
+
+	@Override
+	public boolean isGstExistCompany(String gst) {
+		String sql = "select count(gst_id) from gst_company where gst_id = ?";
+		Integer count = jt.queryForObject(sql,new Object[] {gst}, Integer.class);
+		if(count == 1)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public boolean isGstExistStartup(String gst) {
+		String sql = "select count(gst_id) from gst_startup where gst_id = ?";
+		Integer count = jt.queryForObject(sql,new Object[] {gst}, Integer.class);
+		if(count == 1)
+			return true;
+		else
+			return false;
+	}
+
+	
 }
