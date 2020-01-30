@@ -108,10 +108,13 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     <form class="Bidding Details" onsubmit="return validate()" action="gstadd" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
+        <label>GST Id</label>
         <input type="text" id="id1" name="gstId"   placeholder="Enter GST"/>
-        <span id="msg1" style="color:red;"></span>
+        <span id="msg1" style="color:red;"></span><br>
+         <label>Company Name</label>
         <input type="text" id="id3" name="name"  placeholder="Enter Company Name"/>
-        <span id="msg3" style="color:red;"></span>
+        <span id="msg3" style="color:red;"></span><br>
+         <label>PAN</label>
          <input type="text" id="id2" name="pan"  placeholder="Enter PAN"/>
          <span id="msg2" style="color:red;"></span>
         <input type="submit" class ="bg-primary" value="Add Company"/>

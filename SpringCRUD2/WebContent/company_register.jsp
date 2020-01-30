@@ -11,7 +11,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
 <style>
 body{
-   background-image:url('Startup-India-Scheme.jpg');
+   background-image:url('https://cdn.slidemodel.com/wp-content/uploads/7882-01-introduce-company-profile-powerpoint-template-16x9-1-cover.jpg');
   background-repeat:no-repeat;
   background-attachment:fixed;
     background-color:aliceblue;
@@ -35,7 +35,7 @@ body{
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
+    text-align: left;
     box-shadow: 10px 10px 5px grey;
 }
 
@@ -94,21 +94,28 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
     <form name="form1" class="register-form" onsubmit="return validate()" action="compReg" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
+        <label>Company Name</label>
         <input type="text" id="id1" placeholder="Name" name="compName"/>
-        <span id="msg1" style="color:red;"></span>
+        <span id="msg1" style="color:red;"></span><br>
+        <label>GST Id</label>
         <input type="text" id="id2" placeholder="gst-Id" name="gstId"/>
-         <span id="msg2" style="color:red;"></span>
+         <span id="msg2" style="color:red;"></span><br>
+        <label>Contact No</label>
         <input type="text"  id="id3" placeholder="Phone No" name="contactNo"/>
-         <span id="msg3" style="color:red;"></span>
+         <span id="msg3" style="color:red;"></span><br>
+        <label>Email Address</label>
         <input type="text" id="email" placeholder="Email-Id" name="email"/>
-        <span id="avail4" style="color:blue;"></span>
+        <span id="avail4" style="color:blue;"></span><br>
+        <label>PAN</label>
         <input type="text" id="id5" placeholder="PAN" name="pan"/>
-         <span id="msg5" style="color:red;"></span>
+         <span id="msg5" style="color:red;"></span><br>
+        <label>Description</label>
         <input type="text" id="id6" placeholder="description" name="description"/>
-         <span id="msg6" style="color:red;"></span>
+         <span id="msg6" style="color:red;"></span><br>
+        <label>Password</label>
         <input type="password" id="id7" name ="password" placeholder="Password"/>
          <span id="msg7" style="color:red;"></span>
-        <input type="submit" value="Register"onclick=" return ValidateEmail(document.form1.email)" />
+        <input type="submit" class="bg-success" value="Register" onclick=" return ValidateEmail(document.form1.email)" />
         <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
     </div>

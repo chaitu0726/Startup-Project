@@ -113,8 +113,11 @@ Amount       : ${projectList.projectBidAmount}<br>
     <form action="applyBid" onsubmit="return validate()" method="post">
         <div class="col-3"></div>
         <div class="col-3"><br></div> 
+       
+         <label>Enter Bid Amount</label>
         <input type="text" id="bid" name="bidAmount" placeholder="Bid Amount"/>
-        <span id="msg1" style="color:red;"></span>
+        <span id="msg1" style="color:red;"></span><br>
+         <label>Enter Bid Duration</label>
         <input type="text" id="bidd" name="bidDuration" placeholder="Bid-Duration"/>
         <span id="msg2" style="color:red;"></span>
         <input type="hidden" name="projectId"  value="${projectList.projetcId}"/>

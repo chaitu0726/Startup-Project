@@ -47,7 +47,7 @@ public class AjaxServiceImpl implements AjaxService{
 
 	@Override
 	public boolean isGstExistCompany(String gst) {
-		String sql = "select count(gst_id) from gst_company where gst_id = ?";
+		String sql = "select count(gst_id) from gst where gst_id =? and ? not in(select gst_id from gst_company)";
 		Integer count = jt.queryForObject(sql,new Object[] {gst}, Integer.class);
 		if(count == 1)
 			return true;
@@ -57,7 +57,7 @@ public class AjaxServiceImpl implements AjaxService{
 
 	@Override
 	public boolean isGstExistStartup(String gst) {
-		String sql = "select count(gst_id) from gst_startup where gst_id = ?";
+		String sql = " select count(gst_id) from gst where gst_id =? and ? not in(select gst_id from gst_company)";
 		Integer count = jt.queryForObject(sql,new Object[] {gst}, Integer.class);
 		if(count == 1)
 			return true;

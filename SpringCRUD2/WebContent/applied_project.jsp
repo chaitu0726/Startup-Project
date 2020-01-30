@@ -26,7 +26,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
 
 <div class="container mt-2">
 <div class="row">
-	<div class="col-3">
+	<div class="col-5">
 		
 		<table class="table">
   			<thead>
@@ -47,7 +47,7 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
    		</table>	
 	</div>
 	   
-  	<div class="col-9">
+  	<div class="col-7">
   	 
  		<table class="table">	 	
   			<thead>

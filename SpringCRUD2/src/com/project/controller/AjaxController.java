@@ -60,12 +60,13 @@ public class AjaxController {
 	@ResponseBody
 	public String checkAvailabilityGstStartup(@RequestParam String gst)
 	{
+		
 		if(ajaxService.isGstExistStartup(gst))
-			return "Invalid Gst";
+			return "Valid GST";
 		else if(gst == "")
 			return "Gst Number Cannot blank";
 		else
-		return "";
+		return "Invalid GST";
 	}
 	
 	
@@ -78,7 +79,7 @@ public class AjaxController {
 		else if(pan == "")
 			return "PAN Number Cannot blank";
 		else
-		return "PAN is Invalid";
+		return "Invalid PAN";
 		
 	}
 	
@@ -87,11 +88,11 @@ public class AjaxController {
 	public String checkAvailabilityGstComapny(@RequestParam String gst)
 	{
 		if(ajaxService.isGstExistCompany(gst))
-			return "Invalid GST";
+			return "Valid Gst";
 		else if(gst == "")
 			return "Gst Number Cannot blank";
 		else
-		return "";
+		return "Invalid GST";
 	}
 	
 	@RequestMapping(value="/check_panC",method = RequestMethod.GET)

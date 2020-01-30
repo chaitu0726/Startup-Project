@@ -18,8 +18,8 @@
   crossorigin="anonymous"></script>     
 <style>
 
-.body{
-   background-image:url('Startup-India-Scheme.jpg');
+body{
+   background-image:url('https://www.northeastern.edu/graduate/blog/wp-content/uploads/2017/10/Code-on-Computer-Hero.gif');
   background-repeat:no-repeat;
   background-attachment:fixed;
     background-color:aliceblue;
@@ -39,11 +39,11 @@
 
     position: relative;
     z-index: 1;
-    background:lightgrey;
+    background:white;
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
+    text-align: left;
     box-shadow: 10px 10px 5px grey;
 }
 
@@ -89,14 +89,12 @@
 <body align="center">
    <div class="login-page">
          <div class="form">
-            <div class="col-3"></div>
-            <div class="col-6" style="font-size:20px;">Login Form</div> 
-            <div class="col-3"><br></div> 
-           
-             <form  class="Login-form"  onsubmit="return validate()" action="login" method="post">
-           
+         
+             <form autocomplete="on" onsubmit="return validate()" action="login" method="post">
+           		<label>Username</label>
                  <input type="text"  id ="uname" name ="username"  placeholder="Username"/>
-                 <span id="ures" class="text-danger"></span>
+                 <span id="ures" class="text-danger"></span><br>
+                 <label>Password</label>
                  <input type="password" id="pass" name="password" placeholder="Password"/>
                  <span id="pres" class="text-danger"></span>
                  <button type="submit" class="bg-success">Login</button>

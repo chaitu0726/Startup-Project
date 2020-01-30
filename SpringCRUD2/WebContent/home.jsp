@@ -18,7 +18,7 @@
   crossorigin="anonymous"></script>
  <style>
 body{
-   background-image:url('Startup-India-Scheme.jpg');
+   background-image:url('https://screen.verifirst.com/hubfs/Blog_Images/why_startups_need_a_background_screening_company.jpg');
   background-repeat:no-repeat;
   background-attachment:fixed;
     background-color:aliceblue;
@@ -42,7 +42,7 @@ body{
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
+    text-align: left;
     box-shadow: 10px 10px 5px grey;
 }
 
@@ -100,24 +100,32 @@ body{
     
     <form name="form1" class="register-form" onsubmit="return validate()" action="add" method="post">
  
-        
+       
+        <label>Startup Name</label>
         <input type="text" id="name" name="name" placeholder="Company Name"/>
-        	<span id="avail1" style="color:red"></span>
+        	<span id="avail1" style="color:red"></span><br>
+        <label>GST Id</label>
         <input type="text" id="gstid" name="gstId" placeholder="gst-Id"/>
-        	<span id="avail2" style="color:red"></span>
+        	<span id="avail2" style="color:red"></span><br>
+        <label>Contact No</label>
         <input type="text" id="contact" name="contactNo" placeholder="Phone No"/>
-        	<span id="avail3" style="color:red"></span>
+        	<span id="avail3" style="color:red"></span><br>
+        <label>Email Address</label>
         <input type="text" id="email"  name="email" placeholder="Email-Id"/>
-        <span id="avail4" style="color:green"></span>
+        <span id="avail4" style="color:green"></span><br>
+        <label>Description</label>
         <input type="text" id="desc" name="discription" placeholder="Description"/>
-        	<span id="avail5" style="color:red"></span>
+        	<span id="avail5" style="color:red"></span><br>
+        <label>No of Employees</label>
         <input type="text" id="noe" name="noOfEmployee" placeholder="No Of Employee"/>
-        	<span id="avail6" style="color:red"></span>
+        	<span id="avail6" style="color:red"></span><br>
+        <label>PAN</label>
 		<input type="text" id="pan" name="pan" placeholder="Enter PAN"/>
-			<span id="avail7" style="color:red"></span>
+			<span id="avail7" style="color:red"></span><br>
+        <label>Password</label>
 		<input type="password" id="pass" name="password" placeholder="Enter Password"/>
         	<span id="avail9" style="color:red"></span>
-        <input type="submit" onclick="return ValidateEmail(document.form1.email)" />
+        <input type="submit" class="bg-success" onclick="return ValidateEmail(document.form1.email)" />
         <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
     </div>
