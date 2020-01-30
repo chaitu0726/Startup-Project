@@ -117,7 +117,7 @@ body{
 			<span id="avail7" style="color:red"></span>
 		<input type="password" id="pass" name="password" placeholder="Enter Password"/>
         	<span id="avail9" style="color:red"></span>
-        <input type="submit" onclick=" return ValidateEmail(document.form1.email)" />
+        <input type="submit" onclick="return ValidateEmail(document.form1.email)" />
         <p class="message">Already Registered?<a href="index.jsp">Login</a></p>
     </form>
     </div>
