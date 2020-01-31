@@ -11,7 +11,7 @@
  
  <style type="text/css">
  body{
- background-image:url('Error.png');
+ background-image:url('https://36bvmt283fg61unuud3h7qua-wpengine.netdna-ssl.com/wp-content/uploads/2013/03/airbnb-404.gif');
  
  }
  </style>
