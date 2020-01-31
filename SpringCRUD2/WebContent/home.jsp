@@ -105,7 +105,7 @@ body{
         <input type="text" id="name" name="name" placeholder="Company Name"/>
         	<span id="avail1" style="color:red"></span><br>
         <label>GST Id</label>
-        <input type="text" id="gstid" name="gstId" placeholder="gst-Id"/>
+        <input type="text" id="gstId" name="gstId" placeholder="gst-Id"/>
         	<span id="avail2" style="color:red"></span><br>
         <label>Contact No</label>
         <input type="text" id="contact" name="contactNo" placeholder="Phone No"/>
@@ -149,7 +149,7 @@ function validate()
 {
 var username = document.getElementById("email").value.trim();
 var id1 = document.getElementById("name").value.trim();
-var id2 = document.getElementById("gstid").value.trim();
+var id2 = document.getElementById("gstId").value.trim();
 var id3 = document.getElementById("contact").value.trim();
 var id4 = document.getElementById("desc").value.trim();
 var id5 = document.getElementById("noe").value.trim();
@@ -210,10 +210,10 @@ if(id1=="" || id2=="" || id3=="" || id4=="" || id5=="" || id6=="" || id8=="" ||u
 </script>
 <script type="text/javascript">
 $(document).ready(function(){
-	$("#gstid").change(function(){
+	$("#gstId").change(function(){
 		$.ajax({
-			url : 'check_gstS',
-			data : {gst : $("#gstid").val()},
+			url : 'check_gstt',
+			data : {gst : $("#gstId").val()},
 			success : function(data){
 				$("#avail2").html(data);
 			}

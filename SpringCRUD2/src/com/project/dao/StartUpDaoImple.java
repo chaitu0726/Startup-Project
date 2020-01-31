@@ -81,8 +81,7 @@ public class StartUpDaoImple implements StartUpDao {
 						flag
 					});
 			
-			sql = "insert into startup(description,no_of_Employee,email,flag)"
-					+ " values(?,?,?,?)";
+			sql = "insert into startup(description,no_of_Employee,email,flag) values(?,?,?,?)";
 			
 			 System.out.println(sql);
 			int k = jt.update(sql,new Object[] {
@@ -254,9 +253,10 @@ public class StartUpDaoImple implements StartUpDao {
 				bid.getCompanyId(),
 				id,
 				bid.getBidAmount(),
-				bid.getBidDuration(),
+				bid.getBidDuration(),	
 				status,flag
 		});
+		System.out.println("hi");
 		return true;
 	}
 

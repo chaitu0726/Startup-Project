@@ -242,7 +242,7 @@ public class StartUpController
 			
 			
 	}
-	
+		
 	@RequestMapping(value="/appliedProject",method = RequestMethod.GET)
 	public ModelAndView applyProject()
 	{

@@ -44,7 +44,7 @@ body{
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
-    text-align: center;
+    text-align: left;
     box-shadow: 10px 10px 5px grey;
 }
 

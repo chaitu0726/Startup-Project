@@ -199,7 +199,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#id2").change(function(){
 		$.ajax({
-			url : 'check_gstC',
+			url : 'check_gstp',
 			data : {gst : $("#id2").val()},
 			success : function(data){
 				$("#msg2").html(data);

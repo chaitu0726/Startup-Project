@@ -56,7 +56,7 @@ public class AjaxController {
 		
 	}
 	
-	@RequestMapping(value="/check_gstS",method = RequestMethod.GET)
+	@RequestMapping(value="/check_gstt",method = RequestMethod.GET)
 	@ResponseBody
 	public String checkAvailabilityGstStartup(@RequestParam String gst)
 	{
@@ -83,7 +83,7 @@ public class AjaxController {
 		
 	}
 	
-	@RequestMapping(value="/check_gstC",method = RequestMethod.GET)
+	@RequestMapping(value="/check_gstp",method = RequestMethod.GET)
 	@ResponseBody
 	public String checkAvailabilityGstComapny(@RequestParam String gst)
 	{

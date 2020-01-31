@@ -27,7 +27,7 @@ public class LoginDaoImple implements LoginDao{
 	@Override
 	public Login login(Login login) {
 		
-		String sql = "select *from login where username=? and password = ?";
+		String sql = "select *from login where username=? and password= ?";
 		Login lg = jt.queryForObject(sql, new Object [] {login.getUsername(),login.getPassword()}, new RowMapper<Login>() {
 			
 			
