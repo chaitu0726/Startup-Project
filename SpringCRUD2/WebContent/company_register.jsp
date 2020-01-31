@@ -101,10 +101,10 @@ integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6J
         <input type="text" id="id2" placeholder="gst-Id" name="gstId"/>
          <span id="msg2" style="color:red;"></span><br>
         <label>Contact No</label>
-        <input type="text"  id="id3" placeholder="Phone No" name="contactNo"/>
+        <input type="text" pattern="[789][0-9]{9}"  id="id3" placeholder="Phone No" name="contactNo"/>
          <span id="msg3" style="color:red;"></span><br>
         <label>Email Address</label>
-        <input type="text" id="email" placeholder="Email-Id" name="email"/>
+        <input type="email" id="email" placeholder="Email-Id" name="email"/>
         <span id="avail4" style="color:blue;"></span><br>
         <label>PAN</label>
         <input type="text" id="id5" placeholder="PAN" name="pan"/>

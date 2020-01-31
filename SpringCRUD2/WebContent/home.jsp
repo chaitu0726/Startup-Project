@@ -108,10 +108,10 @@ body{
         <input type="text" id="gstId" name="gstId" placeholder="gst-Id"/>
         	<span id="avail2" style="color:red"></span><br>
         <label>Contact No</label>
-        <input type="text" id="contact" name="contactNo" placeholder="Phone No"/>
+        <input type="text" pattern="[789][0-9]{9}" id="contact" name="contactNo" placeholder="Phone No"/>
         	<span id="avail3" style="color:red"></span><br>
         <label>Email Address</label>
-        <input type="text" id="email"  name="email" placeholder="Email-Id"/>
+        <input type="email" id="email"  name="email" placeholder="Email-Id"/>
         <span id="avail4" style="color:green"></span><br>
         <label>Description</label>
         <input type="text" id="desc" name="discription" placeholder="Description"/>
