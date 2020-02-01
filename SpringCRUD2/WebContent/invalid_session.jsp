@@ -18,9 +18,7 @@
 </head>
 <body align="center" class="jumbotron">
 <h1>Site is  under Maintainance</h1>
-<form action="home_startup" method="get">
-<div><input type="submit" value="HOME"></div>
-</form>
+<a href="home_startup">HOME</a>
 </body>
 <script type = "text/javascript">
    function preventBack(){window.history.forward();}
