@@ -30,7 +30,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 
  <properties>
- <spring.version>4.3.20.RELEASE</spring.version>
+ <spring.version>5.2.22.RELEASE</spring.version>
  <aspectj.version>1.8.13</aspectj.version>
 
 <mysql.connector.java.version>8.0.18</mysql.connector.java.version>
