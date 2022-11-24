@@ -34,7 +34,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
  <aspectj.version>1.8.13</aspectj.version>
 
 <mysql.connector.java.version>8.0.18</mysql.connector.java.version>
- <hibernate.version>4.3.0.Final</hibernate.version>
+ <hibernate.version>5.3.20.Final</hibernate.version>
 
 <spring.security.version>3.0.7.RELEASE</spring.security.version>
  </properties>
